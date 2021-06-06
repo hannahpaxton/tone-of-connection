@@ -6,23 +6,47 @@ from datetime import datetime
 def create_user(username, password, email):
     """Create and return a new user."""
 
-    user = User(user=user, password=password, email=email)
+    user = User(username=username, password=password, email=email)
 
     db.session.add(user)
     db.session.commit()
 
     return user
 
-def create_post(post_text, lat_long, datetime_saved):
-    """Create and return a new post."""
+def get_users():
+    "View all users"
 
-    post = Post(post_text=post_text, lat_long=lat_long, datetime_saved=datetime_saved)
+    return User.query.all()
 
-    db.session.add(post)
+def get_user_by_email(email):
+    """Return a user by email"""
+
+    return User.query.filter(User.email == email).first()
+
+def get_user_by_id(user_id):
+    """Return a user by id"""
+
+    return User.query.get(user_id)
+
+def get_user_by_password(email,password):
+    """Return a user by password."""
+
+    return User.query.filter(User.password == password, User.email == email).first()
+
+def create_tone_quality(tone_quality):
+    """Create and return all tone quality possibilities"""
+
+    tone_quality = Quality(tone_quality=tone_quality)
+
+    db.session.add(tone_quality)
     db.session.commit()
 
-    return user
+    return tone_quality
 
+def get_tone_qualities():
+    "View all tone_qualities"
+
+    return Quality.query.all()
 
 if __name__ == '__main__':
     from server import app

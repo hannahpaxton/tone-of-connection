@@ -25,9 +25,9 @@ class User(db.Model):
     user_id = db.Column(db.Integer,
                     autoincrement=True,
                     primary_key=True)
-    username = db.Column(db.String)
-    password = db.Column(db.String)
-    email = db.Column(db.String)
+    username = db.Column(db.String, nullable=False)
+    password = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
 
     posts = db.relationship('Post', backref='user')
 
@@ -64,8 +64,8 @@ class Result(db.Model):
                 primary_key=True)
     post_id = db.Column(db.Integer,
     db.ForeignKey('posts.post_id'))
-    tone_quality = db.Column(db.String,
-    db.ForeignKey('tone_qualities.tone_quality'))
+    tone_quality_id = db.Column(db.Integer,
+    db.ForeignKey('tone_qualities.tone_quality_id'))
     tone_score = db.Column(db.Integer)
     hex_code = db.Column(db.String)
 
@@ -81,10 +81,10 @@ class Quality(db.Model):
     __tablename__ = 'tone_qualities'
 
     tone_quality_id = db.Column(db.Integer,
-                autoincrement=True)
-    tone_quality = db.Column(db.String,
-                unique=True,
+                autoincrement=True,
                 primary_key=True)
+    tone_quality = db.Column(db.String,
+                unique=True)
 
     # tone_results (comes from backref in tone_qualities)
 
