@@ -33,6 +33,25 @@ def get_user_by_password(email,password):
 
     return User.query.filter(User.password == password, User.email == email).first()
 
+def create_post(user_id, post_text, lat_long, created_at):
+    """Create and return a user post"""
+
+    post = Post(user_id=user_id, post_text=post_text, lat_long=lat_long, created_at=created_at)
+
+    db.session.add(post)
+    db.session.commit()
+
+    return post
+
+def create_result(post_id, tone_quality, tone_score, hex_code):
+    
+    result = Result(post_id=post_id, tone_quality=tone_quality, tone_score=tone_score, hex_code=hex_code)
+
+    db.session.add(result)
+    db.session.commit()
+
+    return result
+
 def create_tone_quality(tone_quality):
     """Create and return all tone quality possibilities"""
 

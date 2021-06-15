@@ -45,14 +45,14 @@ class Post(db.Model):
     user_id = db.Column(db.Integer,
     db.ForeignKey('users.user_id'))
     post_text = db.Column(db.String)
-    lat_long = db.Column(db.Integer)
-    datetime_saved = db.Column(db.DateTime)
+    lat_long = db.Column(db.Float)
+    created_at = db.Column(db.DateTime)
 
     tone_results = db.relationship('Result', backref='post')
     # user (comes from backref in posts)
 
     def __repr__(self):
-        return f'<Post post_id={self.post_id} datetime_saved={self.datetime_saved}>'
+        return f'<Post post_id={self.post_id} created_at={self.created_at}>'
 
 class Result(db.Model):
     """A tone result from a user text input."""
@@ -64,9 +64,9 @@ class Result(db.Model):
                 primary_key=True)
     post_id = db.Column(db.Integer,
     db.ForeignKey('posts.post_id'))
-    tone_quality_id = db.Column(db.Integer,
-    db.ForeignKey('tone_qualities.tone_quality_id'))
-    tone_score = db.Column(db.Integer)
+    tone_quality = db.Column(db.String,
+    db.ForeignKey('tone_qualities.tone_quality'))
+    tone_score = db.Column(db.Float)
     hex_code = db.Column(db.String)
 
     tone_qualities = db.relationship('Quality', backref='tone_results')
@@ -79,12 +79,10 @@ class Quality(db.Model):
     """All possible tone qualities that can be produced."""
 
     __tablename__ = 'tone_qualities'
-
-    tone_quality_id = db.Column(db.Integer,
-                autoincrement=True,
-                primary_key=True)
+# Could possibly add base hex and description
     tone_quality = db.Column(db.String,
-                unique=True)
+                unique=True,
+                primary_key=True)
 
     # tone_results (comes from backref in tone_qualities)
 
