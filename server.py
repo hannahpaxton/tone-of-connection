@@ -95,7 +95,7 @@ def create_post():
 
     post_text = request.form.get('user_post')
     lat_long = 89.55555
-    # Replace with actual user lat_long
+    # Dummy value - replace with actual user lat_long
     created_at = datetime.now()
 
     post = crud.create_post(session['user_id'], post_text, lat_long, created_at)
@@ -107,13 +107,11 @@ def create_post():
          ).get_result()
     print(json.dumps(tone_analysis))
 
-    for document_tone, tones in tone_analysis.items():
-        for tones_results, tone_results in tones.items():
-           for tone in tone_results:
-            score = tone["score"]
-            tone_name = tone["tone_name"]
+    for tone_results in tone_analysis["document_tone"]["tones"]:
+            score = tone_results["score"]
+            tone_name = tone_results["tone_name"]
             result = crud.create_result(post.post_id, tone_name, score, "y3pth")
-            #Replace this with actual hex code
+            #Dummy value - replace this with actual hex code
 
     return render_template('tone_result.html', result=result)
 
