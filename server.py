@@ -107,13 +107,16 @@ def create_post():
          ).get_result()
     print(json.dumps(tone_analysis))
 
+    final_results = []
+
     for tone_results in tone_analysis["document_tone"]["tones"]:
             score = tone_results["score"]
             tone_name = tone_results["tone_name"]
             result = crud.create_result(post.post_id, tone_name, score, "y3pth")
+            final_results.append(result)
             #Dummy value - replace this with actual hex code
 
-    return render_template('tone_result.html', result=result)
+    return render_template('tone_result.html', final_results=final_results)
 
 # Tone routes
 
