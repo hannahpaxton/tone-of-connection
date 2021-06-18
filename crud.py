@@ -52,10 +52,10 @@ def create_result(post_id, tone_quality, tone_score, hex_code):
 
     return result
 
-def create_tone_quality(tone_quality):
+def create_tone_quality(tone_quality, base_hex):
     """Create and return all tone quality possibilities"""
 
-    tone_quality = Quality(tone_quality=tone_quality)
+    tone_quality = Quality(tone_quality=tone_quality, base_hex=base_hex)
 
     db.session.add(tone_quality)
     db.session.commit()
