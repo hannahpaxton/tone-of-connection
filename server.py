@@ -110,9 +110,15 @@ def create_post():
     final_results = []
 
     for tone_results in tone_analysis["document_tone"]["tones"]:
-            score = tone_results["score"]
             tone_name = tone_results["tone_name"]
-            result = crud.create_result(post.post_id, tone_name, score, "y3pth")
+            tone_quality = crud.get_tone_by_tone_name(tone_name)
+
+            score = tone_results["score"]
+            score_conversion_delta = 50 - int(round(score * 100 / 2))
+            lightness_value = str(50 + score_conversion_delta)
+            unique_hsl_value = tone_quality.hsl_base_value + lightness_value + "%)"
+
+            result = crud.create_result(post.post_id, tone_name, score, unique_hsl_value)
             final_results.append(result)
             #Dummy value - replace this with actual hex code
 

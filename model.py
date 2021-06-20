@@ -67,7 +67,7 @@ class Result(db.Model):
     tone_quality = db.Column(db.String,
     db.ForeignKey('tone_qualities.tone_quality'))
     tone_score = db.Column(db.Float)
-    hex_code = db.Column(db.String)
+    hsl_value = db.Column(db.String)
 
     tone_qualities = db.relationship('Quality', backref='tone_results')
     # post (comes from backref in tone_results)
@@ -83,12 +83,12 @@ class Quality(db.Model):
     tone_quality = db.Column(db.String,
                 unique=True,
                 primary_key=True)
-    base_hex = db.Column(db.String)
+    hsl_base_value = db.Column(db.String)
 
     # tone_results (comes from backref in tone_qualities)
 
     def __repr__(self):
-        return f'<Quality tone_quality={self.tone_quality} base_hex={self.base_hex}>'
+        return f'<Quality tone_quality={self.tone_quality} hsl_value={self.hsl_value}>'
 
 if __name__ == '__main__':
     # from server import app

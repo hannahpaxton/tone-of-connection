@@ -43,19 +43,19 @@ def create_post(user_id, post_text, lat_long, created_at):
 
     return post
 
-def create_result(post_id, tone_quality, tone_score, hex_code):
+def create_result(post_id, tone_quality, tone_score, hsl_value):
     
-    result = Result(post_id=post_id, tone_quality=tone_quality, tone_score=tone_score, hex_code=hex_code)
+    result = Result(post_id=post_id, tone_quality=tone_quality, tone_score=tone_score, hsl_value=hsl_value)
 
     db.session.add(result)
     db.session.commit()
 
     return result
 
-def create_tone_quality(tone_quality, base_hex):
+def create_tone_quality(tone_quality, hsl_base_value):
     """Create and return all tone quality possibilities"""
 
-    tone_quality = Quality(tone_quality=tone_quality, base_hex=base_hex)
+    tone_quality = Quality(tone_quality=tone_quality, hsl_base_value=hsl_base_value)
 
     db.session.add(tone_quality)
     db.session.commit()
@@ -66,6 +66,11 @@ def get_tone_qualities():
     "View all tone_qualities"
 
     return Quality.query.all()
+
+def get_tone_by_tone_name(tone_name):
+    "View tone by tone_name"
+
+    return Quality.query.filter(Quality.tone_quality == tone_name).first()
 
 if __name__ == '__main__':
     from server import app
