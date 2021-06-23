@@ -72,6 +72,13 @@ def login_user():
         flash('Password does not match. Try again.')
     return redirect(f"/users/{session['user_id']}")
 
+@app.route('/logout')
+def logout(): 
+    if session.get('user_id'):
+        del session['user_id']
+    flash('You are now logged out.')
+    return redirect('/')
+
 # User routes
 @app.route('/users')
 def all_users():
