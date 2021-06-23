@@ -70,7 +70,7 @@ def login_user():
         flash('Logged in!')
     else: 
         flash('Password does not match. Try again.')
-    return redirect('/users')
+    return redirect(f"/users/{session['user_id']}")
 
 # User routes
 @app.route('/users')
