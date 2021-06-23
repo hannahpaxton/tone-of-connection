@@ -35,6 +35,12 @@ def homepage():
 
     return render_template('homepage.html')
 
+@app.route('/login')
+def login():
+    """View login page."""
+
+    return render_template('login.html')
+
 @app.route('/register', methods=['POST'])
 def register_user():
     """Create a new user"""
@@ -49,9 +55,9 @@ def register_user():
     else: 
         crud.create_user(username, password, email)
         flash('Account created!') 
-    return redirect('/')
+    return redirect('/login')
 
-@app.route('/login', methods=['POST'])
+@app.route('/create-session', methods=['POST'])
 def login_user():
     """Login an existing user"""
 
@@ -64,7 +70,7 @@ def login_user():
         flash('Logged in!')
     else: 
         flash('Password does not match. Try again.')
-    return redirect('/')
+    return redirect('/users')
 
 # User routes
 @app.route('/users')
@@ -120,7 +126,6 @@ def create_post():
 
             result = crud.create_result(post.post_id, tone_name, score, unique_hsl_value)
             final_results.append(result)
-            #Dummy value - replace this with actual hex code
 
     return render_template('tone_result.html', final_results=final_results)
 
