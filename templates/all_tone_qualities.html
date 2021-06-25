@@ -1,0 +1,16 @@
+{% extends 'base_log.html' %}
+{% block title %}All Tones{% endblock %}
+
+{% block body %}
+<h1>All Tones</h1>
+
+<ul>
+{% for tone_quality in tone_qualities %}
+    <li>
+        <a href="/tones/{{ tone_quality.tone_quality_id }}">
+            {{ tone_quality.tone_quality }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}

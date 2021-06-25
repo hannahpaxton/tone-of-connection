@@ -1,0 +1,16 @@
+{% extends 'base_log.html' %}
+{% block title %}Create a Post{% endblock %}
+
+{% block body %}
+
+<h2>What do you want to say?</h2>
+<form action="/input" method="POST">
+  <textarea name="user_post" rows="20" cols="50">
+  </textarea>
+
+  <p>
+    <input type="submit">
+  </p>
+</form>
+
+{% endblock %}

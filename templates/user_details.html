@@ -1,0 +1,26 @@
+{% extends 'base_log.html' %}
+
+{% block title %}{{ user.username }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ user.email }}</h1>
+
+<h2>My Posts</h2>
+
+<ul>
+    {% for post in user.posts %}
+        <li>
+        {{ post.post_text }}: 
+          <ul>
+            {% for result in post.tone_results %}
+                <li> {{ result.tone_quality }} 
+                    <div style="height:20px; width:20px; background-color: hsl{{ result.hsl_value }}"></div> 
+                </li>
+            {% endfor %}
+          </ul>
+        </li>
+    {% endfor %}
+    </ul>
+
+
+{% endblock %}
