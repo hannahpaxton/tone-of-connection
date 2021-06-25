@@ -146,6 +146,14 @@ def all_tone_qualities():
 
     return render_template('all_tone_qualities.html', tone_qualities=tone_qualities)
 
+# Map routes
+
+@app.route('/map')
+def view_map():
+    """View map."""
+
+    return render_template('render_map.html')
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)
