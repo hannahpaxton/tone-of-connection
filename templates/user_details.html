@@ -22,5 +22,41 @@
     {% endfor %}
     </ul>
 
+    <!-- <form action="/geolocate">
+        <div>
+          <label for="zipfield">What's your ZIP Code?</label>
+          <input id="zipfield" type="text" name="zipcode" required />
+        </div>
+        <div>
+          <input type="submit" />
+        </div>
+      </form> -->
+
+
+    <!-- <button id="get-geolocation">
+        Geolocate me!
+    </button>
+
+    <script>
+        "use strict";
+    
+        const geoButton = document.querySelector('#get-geolocation');
+    
+        geoButton.addEventListener('click', () => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (currPosition) => {
+                        alert('Recieved location!');
+                        console.log({
+                            lat: currPosition.coords.latitude,
+                            lng: currPosition.coords.longitude
+                        });
+                    }
+                );    
+            }                
+        });
+    
+    </script> -->
+
 
 {% endblock %}

@@ -22,7 +22,10 @@ tone_analyzer = ToneAnalyzerV3(
 )
 tone_analyzer.set_service_url(ENDPOINT)
 
-# tone_analyzer.set_disable_ssl_verification(True)
+GEOCODE_KEY = os.environ['GEOCODE_KEY']
+from geocodio import GeocodioClient
+
+client = GeocodioClient(GEOCODE_KEY)
 
 app = Flask(__name__)
 app.secret_key = "dev"
@@ -107,11 +110,17 @@ def create_post():
     """Create a post and save in database"""
 
     post_text = request.form.get('user_post')
-    lat_long = 89.55555
-    # Dummy value - replace with actual user lat_long
+
+    zipcode = request.form.get('zipcode')
+    location_result = client.geocode(zipcode)
+    print(location_result)
+
+    lat = location_result["results"][0]["location"]["lat"]
+    lng = location_result["results"][0]["location"]["lng"]	
+
     created_at = datetime.now()
 
-    post = crud.create_post(session['user_id'], post_text, lat_long, created_at)
+    post = crud.create_post(session['user_id'], post_text, lat, lng, created_at)
 
     tone_analysis = tone_analyzer.tone(
         {'post_text': post_text},
@@ -147,6 +156,21 @@ def all_tone_qualities():
     return render_template('all_tone_qualities.html', tone_qualities=tone_qualities)
 
 # Map routes
+
+@app.route('/geolocate')
+def get_geolocation():
+    """Get user geolocation."""
+
+    zipcode = request.args['zipcode']
+    location_result = client.geocode(zipcode)
+    print(location_result)
+
+    lat = location_result["results"][0]["location"]["lat"]
+    print(lat)
+    lng = location_result["results"][0]["location"]["lng"]	
+    print(lng)
+
+    return redirect('/')
 
 @app.route('/map')
 def view_map():
