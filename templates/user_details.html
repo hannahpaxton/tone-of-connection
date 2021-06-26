@@ -1,9 +1,15 @@
 {% extends 'base_log.html' %}
 
 {% block title %}{{ user.username }} - Details{% endblock %}
+{% block head %}
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+{% endblock %}
 
 {% block body %}
-<h1>{{ user.email }}</h1>
+<h1>{{ user.username }}</h1>
 
 <h2>My Posts</h2>
 
@@ -20,43 +26,6 @@
           </ul>
         </li>
     {% endfor %}
-    </ul>
-
-    <!-- <form action="/geolocate">
-        <div>
-          <label for="zipfield">What's your ZIP Code?</label>
-          <input id="zipfield" type="text" name="zipcode" required />
-        </div>
-        <div>
-          <input type="submit" />
-        </div>
-      </form> -->
-
-
-    <!-- <button id="get-geolocation">
-        Geolocate me!
-    </button>
-
-    <script>
-        "use strict";
-    
-        const geoButton = document.querySelector('#get-geolocation');
-    
-        geoButton.addEventListener('click', () => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (currPosition) => {
-                        alert('Recieved location!');
-                        console.log({
-                            lat: currPosition.coords.latitude,
-                            lng: currPosition.coords.longitude
-                        });
-                    }
-                );    
-            }                
-        });
-    
-    </script> -->
-
+</ul>
 
 {% endblock %}

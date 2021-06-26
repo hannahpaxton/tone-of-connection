@@ -1,6 +1,12 @@
 {% extends 'base_log.html' %}
 
 {% block title %}Post Results{% endblock %}
+{% block head %}
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+
+{% endblock %}
 
 {% block body %}
 <h1>How are you feeling?</h1>
@@ -20,5 +26,6 @@
             </li>
         {% endif %}      
     </ul>
-
+    
+ 
 {% endblock %}

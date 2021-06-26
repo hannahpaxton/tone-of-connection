@@ -1,8 +1,8 @@
 """Server for Tone of Connection app."""
 
 from flask import (Flask, render_template, request, flash, session,
-                   redirect)
-from model import connect_to_db
+                   redirect, jsonify)
+from model import connect_to_db, Post
 import crud
 
 from jinja2 import StrictUndefined
@@ -144,6 +144,25 @@ def create_post():
             final_results.append(result)
 
     return render_template('tone_result.html', final_results=final_results)
+# Post routes
+
+@app.route('/api/posts')
+def post_info():
+    """JSON information about posts."""
+
+    posts = [
+        {
+            "post_id": post.post_id,
+            "user_id": post.user_id,
+            "post_text": post.post_text,
+            "lat": post.lat,
+            "lng": post.lng,
+            "created_at": post.created_at,
+        }
+        for post in Post.query.limit(50)
+    ]
+
+    return jsonify(posts)
 
 # Tone routes
 
@@ -156,21 +175,6 @@ def all_tone_qualities():
     return render_template('all_tone_qualities.html', tone_qualities=tone_qualities)
 
 # Map routes
-
-@app.route('/geolocate')
-def get_geolocation():
-    """Get user geolocation."""
-
-    zipcode = request.args['zipcode']
-    location_result = client.geocode(zipcode)
-    print(location_result)
-
-    lat = location_result["results"][0]["location"]["lat"]
-    print(lat)
-    lng = location_result["results"][0]["location"]["lng"]	
-    print(lng)
-
-    return redirect('/')
 
 @app.route('/map')
 def view_map():
