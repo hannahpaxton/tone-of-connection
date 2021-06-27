@@ -9,6 +9,7 @@ from jinja2 import StrictUndefined
 from datetime import datetime
 import os
 import json
+from colour import Color
 
 API_KEY = os.environ['TONE_KEY']
 ENDPOINT = os.environ['URL']
@@ -163,6 +164,15 @@ def post_info():
     ]
 
     return jsonify(posts)
+
+@app.route('/convert')
+def color_convert():
+    """Convert hsl tone color to hex code for map marker."""
+
+    # c1 = Color('#ff0000')
+    # c1.saturation = .2
+    # print(c1)
+    # return c1
 
 # Tone routes
 
