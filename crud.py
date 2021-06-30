@@ -43,19 +43,19 @@ def create_post(user_id, post_text, lat, lng, created_at):
 
     return post
 
-def create_result(post_id, tone_quality, tone_score, hsl_value):
+def create_result(post_id, tone_quality, tone_score, hex_value):
     
-    result = Result(post_id=post_id, tone_quality=tone_quality, tone_score=tone_score, hsl_value=hsl_value)
+    result = Result(post_id=post_id, tone_quality=tone_quality, tone_score=tone_score, hex_value=hex_value)
 
     db.session.add(result)
     db.session.commit()
 
     return result
 
-def create_tone_quality(tone_quality, hsl_base_value):
+def create_tone_quality(tone_quality, hex_base_value):
     """Create and return all tone quality possibilities"""
 
-    tone_quality = Quality(tone_quality=tone_quality, hsl_base_value=hsl_base_value)
+    tone_quality = Quality(tone_quality=tone_quality, hex_base_value=hex_base_value)
 
     db.session.add(tone_quality)
     db.session.commit()

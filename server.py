@@ -137,11 +137,13 @@ def create_post():
             tone_quality = crud.get_tone_by_tone_name(tone_name)
 
             score = tone_results["score"]
-            score_conversion_delta = 50 - int(round(score * 100 / 2))
-            lightness_value = str(50 + score_conversion_delta)
-            unique_hsl_value = tone_quality.hsl_base_value + lightness_value + "%)"
+            score_conversion_delta = .5 - (score / 2)
+            luminance_value = str(.5 + score_conversion_delta)
+            c1 = Color(tone_quality.hex_base_value)
+            c1.luminance = luminance_value
+            unique_hex_value = c1.hex
 
-            result = crud.create_result(post.post_id, tone_name, score, unique_hsl_value)
+            result = crud.create_result(post.post_id, tone_name, score, unique_hex_value)
             final_results.append(result)
 
     return render_template('tone_result.html', final_results=final_results)
@@ -169,10 +171,13 @@ def post_info():
 def color_convert():
     """Convert hsl tone color to hex code for map marker."""
 
-    # c1 = Color('#ff0000')
-    # c1.saturation = .2
-    # print(c1)
-    # return c1
+    score = .95
+    score_conversion_delta = .5 - (score / 2)
+    lightness_value = str(.5 + score_conversion_delta)
+    c1 = Color('#ccff66')
+    c1.luminance = lightness_value
+    print(c1)
+    return c1
 
 # Tone routes
 

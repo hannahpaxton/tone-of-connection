@@ -20,7 +20,7 @@
           <ul>
             {% for result in post.tone_results %}
                 <li> {{ result.tone_quality }} 
-                    <!-- <div style="height:20px; width:20px; background-color: hsl{{ result.hsl_value }}"></div>  -->
+                    <div style="height:20px; width:20px; background-color: {{ result.hex_value }}"></div> 
                 </li>
             {% endfor %}
           </ul>

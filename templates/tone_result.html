@@ -15,14 +15,14 @@
         {% if final_results is iterable %}
             {% for tone_result in final_results %}
                 <li>
-                    {{ tone_result.tone_quality }}: {{ tone_result.tone_score }} {{ tone_result.hsl_value }} 
-                    <!-- <div style="height:20px; width:20px; background-color: hsl{{ tone_result.hsl_value }}"></div> -->
+                    {{ tone_result.tone_quality }}: {{ tone_result.tone_score }} {{ tone_result.hex_value }} 
+                    <div style="height:20px; width:20px; background-color:{{ tone_result.hex_value }}"></div>
                 </li>
             {% endfor %}
         {% else %}
             <li>
-                {{ final_results.tone_quality }}: {{ final_results.tone_score }} {{ tone_result.hsl_value }}
-                <!-- <div style="height:20px; width:20px; background-color: hsl{{ tone_result.hsl_value }}"></div>  -->
+                {{ final_results.tone_quality }}: {{ final_results.tone_score }} {{ tone_result.hex_value }}
+                <div style="height:20px; width:20px; background-color:{{ tone_result.hex_value }}"></div> 
             </li>
         {% endif %}      
     </ul>

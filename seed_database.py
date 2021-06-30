@@ -22,32 +22,32 @@ for n in range(10):
 
 possible_tone_qualities = {
     'Anger': {
-        'hsl_base_value': '(0, 100%, ',
+        'hex_base_value': '#ff0000',
     },
     'Disgust': {
-        'hsl_base_value': '(28, 100%, ',
+        'hex_base_value': '#ff7700',
     },
     'Fear': {
-         'hsl_base_value': '(300, 100%, ',       
+         'hex_base_value': '#ff00ff',       
     },
     'Joy': {
-         'hsl_base_value': '(52, 100%, ',             
+         'hex_base_value': '#ffdd00',             
     },
     'Sadness': {
-         'hsl_base_value': '(240, 100%, ',        
+         'hex_base_value': '#0000ff',        
     },
     'Analytical': {
-         'hsl_base_value': '(270, 100%, ',           
+         'hex_base_value': '#6600cc',           
     },
     'Confident': {
-         'hsl_base_value': '(120, 100%, ',          
+         'hex_base_value': '#00ff00',          
     },
     'Tentative': {
-         'hsl_base_value': '(180, 100%, ',         
+         'hex_base_value': '#00ffff',         
     },
 }
 
 for possible_tone_quality, info in possible_tone_qualities.items():
-    hsl_base_value = info["hsl_base_value"]
+    hex_base_value = info["hex_base_value"]
 
-    tone_quality = crud.create_tone_quality(possible_tone_quality, hsl_base_value)
+    tone_quality = crud.create_tone_quality(possible_tone_quality, hex_base_value)
