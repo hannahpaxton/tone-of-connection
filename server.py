@@ -129,6 +129,9 @@ def create_post():
         sentences='false'
          ).get_result()
     print(json.dumps(tone_analysis))
+    # calls new function for tone analysis
+    # create_analysis(tone_analysis)
+    # return render_template('loading_middle_screen.html', post=post) 
 
     final_results = []
 
@@ -147,7 +150,7 @@ def create_post():
             final_results.append(result)
 
     return render_template('tone_result.html', final_results=final_results)
-# Post routes
+# Post routesd
 
 @app.route('/api/posts')
 def post_info():
@@ -161,25 +164,23 @@ def post_info():
             "lat": post.lat,
             "lng": post.lng,
             "created_at": post.created_at,
+            "color": crud.get_color_by_post_id(post.post_id)
         }
         for post in Post.query.limit(50)
     ]
 
+    # GET AN OBJECT OF COLORS
+    # { "123": "#FF00FF" }
+
+    # colors = [
+    #     { "post_id": color.color}
+    # ]
+
+
+    # const object = { posts: posts, colors: colors }
+    # return jsonify(object)
+
     return jsonify(posts)
-
-@app.route('/convert')
-def color_convert():
-    """Convert hsl tone color to hex code for map marker."""
-
-    score = .95
-    score_conversion_delta = .5 - (score / 2)
-    lightness_value = str(.5 + score_conversion_delta)
-    c1 = Color('#ccff66')
-    c1.luminance = lightness_value
-    print(c1)
-    return c1
-
-# Tone routes
 
 @app.route('/tones')
 def all_tone_qualities():

@@ -63,14 +63,20 @@ def create_tone_quality(tone_quality, hex_base_value):
     return tone_quality
 
 def get_tone_qualities():
-    "View all tone_qualities"
+    """View all tone_qualities"""
 
     return Quality.query.all()
 
 def get_tone_by_tone_name(tone_name):
-    "View tone by tone_name"
+    """View tone by tone_name"""
 
     return Quality.query.filter(Quality.tone_quality == tone_name).first()
+
+def get_color_by_post_id(post_id):
+    """Return the color of the max tone score for a given post"""
+
+    max_tone_color = db.session.query(Result.hex_value).filter(Result.post_id==post_id).order_by(Result.tone_score.desc()).first()
+    return max_tone_color
 
 if __name__ == '__main__':
     from server import app
