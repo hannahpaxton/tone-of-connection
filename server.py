@@ -2,7 +2,7 @@
 
 from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
-from model import connect_to_db, Post
+from model import connect_to_db, Post, Result
 import crud
 import asyncio
 
@@ -128,15 +128,14 @@ def create_post():
     # Save post and related data to database
     post = crud.create_post(session['user_id'], post_text, lat, lng, created_at)
 
-    return render_template('post_data.html', post_text=post_text, location_result=location_result, user_facing_date=user_facing_date)
+    return render_template('post_data.html', post=post, location_result=location_result, user_facing_date=user_facing_date)
     # return render_template('tone_result.html', final_results=final_results)
 
-@app.route('/analyze')
-async def analyze_post(post_text):
-    """Analyze a post and save it in the database"""
+    # put in a different file - or the top of the file 
+def analyze_post(post):
 
     tone_analysis = tone_analyzer.tone(
-        {'post_text': post_text},
+        {'post_text': post.post_text},
         content_type='text/plain',
         sentences='false'
          ).get_result()
@@ -158,18 +157,18 @@ async def analyze_post(post_text):
             result = crud.create_result(post.post_id, tone_name, score, unique_hex_value)
             final_results.append(result)
  
-
-@app.route('/api/tone/<post_id>')
-async def tone_info(post_id):
+@app.route('/api/tone/<int:post_id>')
+def tone_info(post_id):
     """Return tone analysis from the database as JSON."""
 
-    await analyze_post()
+    post = crud.get_post_by_post_id(post_id)
+    analyze_post(post)
 
     tone_results = [
         {
             "tone_quality": tone_result.tone_quality,
             "tone_score": tone_result.tone_score,
-            "hex_value": tone_result.hex_score,
+            "hex_value": tone_result.hex_value,
         }
         for tone_result in Result.query.filter(Result.post_id==post_id).all()
     ]
