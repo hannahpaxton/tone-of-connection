@@ -73,12 +73,15 @@ def get_tone_by_tone_name(tone_name):
 
     return Quality.query.filter(Quality.tone_quality == tone_name).first()
 
+
 def get_color_by_post_id(post_id):
     """Return the color of the max tone score for a given post"""
 
     ordered_records = db.session.query(Result).filter(Result.post_id==post_id).order_by(Result.tone_score.desc()).all()
     if ordered_records:
         return ordered_records[0].hex_value
+    else:
+        return "#FFFFFF"
     
 if __name__ == '__main__':
     from server import app

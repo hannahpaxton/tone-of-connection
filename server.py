@@ -4,6 +4,7 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
 from model import connect_to_db, Post
 import crud
+import asyncio
 
 from jinja2 import StrictUndefined
 from datetime import datetime
@@ -110,18 +111,29 @@ def post_home():
 def create_post():
     """Create a post and save in database"""
 
+    # Get post text
     post_text = request.form.get('user_post')
 
+    # Get user location 
     zipcode = request.form.get('zipcode')
     location_result = client.geocode(zipcode)
-    print(location_result)
-
+ 
     lat = location_result["results"][0]["location"]["lat"]
     lng = location_result["results"][0]["location"]["lng"]	
 
+    # Create post timestamp
     created_at = datetime.now()
+    user_facing_date = created_at.strftime("%B %d, %Y")
 
+    # Save post and related data to database
     post = crud.create_post(session['user_id'], post_text, lat, lng, created_at)
+
+    return render_template('post_data.html', post_text=post_text, location_result=location_result, user_facing_date=user_facing_date)
+    # return render_template('tone_result.html', final_results=final_results)
+
+@app.route('/analyze')
+async def analyze_post(post_text):
+    """Analyze a post and save it in the database"""
 
     tone_analysis = tone_analyzer.tone(
         {'post_text': post_text},
@@ -129,9 +141,6 @@ def create_post():
         sentences='false'
          ).get_result()
     print(json.dumps(tone_analysis))
-    # calls new function for tone analysis
-    # create_analysis(tone_analysis)
-    # return render_template('loading_middle_screen.html', post=post) 
 
     final_results = []
 
@@ -148,13 +157,28 @@ def create_post():
 
             result = crud.create_result(post.post_id, tone_name, score, unique_hex_value)
             final_results.append(result)
+ 
 
-    return render_template('tone_result.html', final_results=final_results)
-# Post routesd
+@app.route('/api/tone/<post_id>')
+async def tone_info(post_id):
+    """Return tone analysis from the database as JSON."""
+
+    await analyze_post()
+
+    tone_results = [
+        {
+            "tone_quality": tone_result.tone_quality,
+            "tone_score": tone_result.tone_score,
+            "hex_value": tone_result.hex_score,
+        }
+        for tone_result in Result.query.filter(Result.post_id==post_id).all()
+    ]
+
+    return jsonify(tone_results)
 
 @app.route('/api/posts')
 def post_info():
-    """JSON information about posts."""
+    """JSON information about all posts for map markers."""
 
     posts = [
         {
@@ -168,17 +192,6 @@ def post_info():
         }
         for post in Post.query.limit(50)
     ]
-
-    # GET AN OBJECT OF COLORS
-    # { "123": "#FF00FF" }
-
-    # colors = [
-    #     { "post_id": color.color}
-    # ]
-
-
-    # const object = { posts: posts, colors: colors }
-    # return jsonify(object)
 
     return jsonify(posts)
 
