@@ -3,6 +3,9 @@
 from model import db, User, Post, Result, Quality, connect_to_db
 from datetime import datetime
 from sqlalchemy import func
+import os
+import json
+from colour import Color
 
 def create_user(username, password, email):
     """Create and return a new user."""
@@ -86,6 +89,45 @@ def get_color_by_post_id(post_id):
         return ordered_records[0].hex_value
     else:
         return "#FFFFFF"
+
+# Tone Analyzer API 
+API_KEY = os.environ['TONE_KEY']
+ENDPOINT = os.environ['URL']
+from ibm_watson import ToneAnalyzerV3
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+
+authenticator = IAMAuthenticator(API_KEY)
+tone_analyzer = ToneAnalyzerV3(
+    version='2017-09-21',
+    authenticator=authenticator
+)
+tone_analyzer.set_service_url(ENDPOINT)
+
+def analyze_post(post):
+
+    tone_analysis = tone_analyzer.tone(
+        {'post_text': post.post_text},
+        content_type='text/plain',
+        sentences='false'
+         ).get_result()
+    print(json.dumps(tone_analysis))
+
+    final_results = []
+
+    for tone_results in tone_analysis["document_tone"]["tones"]:
+            tone_name = tone_results["tone_name"]
+            tone_quality = get_tone_by_tone_name(tone_name)
+
+            score = tone_results["score"]
+            score_conversion_delta = .5 - (score / 2)
+            luminance_value = str(.5 + score_conversion_delta)
+            c1 = Color(tone_quality.hex_base_value)
+            c1.luminance = luminance_value
+            unique_hex_value = c1.hex
+
+            result = create_result(post.post_id, tone_name, score, unique_hex_value)
+            final_results.append(result)
+    return final_results
     
 if __name__ == '__main__':
     from server import app

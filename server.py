@@ -4,26 +4,13 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
 from model import connect_to_db, Post, Result
 import crud
-import asyncio
 
 from jinja2 import StrictUndefined
 from datetime import datetime
 import os
 import json
-from colour import Color
 
-API_KEY = os.environ['TONE_KEY']
-ENDPOINT = os.environ['URL']
-from ibm_watson import ToneAnalyzerV3
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-
-authenticator = IAMAuthenticator(API_KEY)
-tone_analyzer = ToneAnalyzerV3(
-    version='2017-09-21',
-    authenticator=authenticator
-)
-tone_analyzer.set_service_url(ENDPOINT)
-
+# Geocoding API
 GEOCODE_KEY = os.environ['GEOCODE_KEY']
 from geocodio import GeocodioClient
 
@@ -129,40 +116,13 @@ def create_post():
     post = crud.create_post(session['user_id'], post_text, lat, lng, created_at)
 
     return render_template('post_data.html', post=post, location_result=location_result, user_facing_date=user_facing_date)
-    # return render_template('tone_result.html', final_results=final_results)
-
-    # put in a different file - or the top of the file 
-def analyze_post(post):
-
-    tone_analysis = tone_analyzer.tone(
-        {'post_text': post.post_text},
-        content_type='text/plain',
-        sentences='false'
-         ).get_result()
-    print(json.dumps(tone_analysis))
-
-    final_results = []
-
-    for tone_results in tone_analysis["document_tone"]["tones"]:
-            tone_name = tone_results["tone_name"]
-            tone_quality = crud.get_tone_by_tone_name(tone_name)
-
-            score = tone_results["score"]
-            score_conversion_delta = .5 - (score / 2)
-            luminance_value = str(.5 + score_conversion_delta)
-            c1 = Color(tone_quality.hex_base_value)
-            c1.luminance = luminance_value
-            unique_hex_value = c1.hex
-
-            result = crud.create_result(post.post_id, tone_name, score, unique_hex_value)
-            final_results.append(result)
- 
+  
 @app.route('/api/tone/<int:post_id>')
 def tone_info(post_id):
     """Return tone analysis from the database as JSON."""
 
     post = crud.get_post_by_post_id(post_id)
-    analyze_post(post)
+    crud.analyze_post(post)
 
     tone_results = [
         {
@@ -189,7 +149,7 @@ def post_info():
             "created_at": post.created_at,
             "color": crud.get_color_by_post_id(post.post_id)
         }
-        for post in Post.query.limit(50)
+        for post in Post.query.limit(200)
     ]
 
     return jsonify(posts)
