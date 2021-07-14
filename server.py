@@ -104,9 +104,9 @@ def create_post():
     # Get user location 
     zipcode = request.form.get('zipcode')
     location_result = client.geocode(zipcode)
- 
+
     lat = location_result["results"][0]["location"]["lat"]
-    lng = location_result["results"][0]["location"]["lng"]	
+    lng = location_result["results"][0]["location"]["lng"]
 
     # Create post timestamp
     created_at = datetime.now()
