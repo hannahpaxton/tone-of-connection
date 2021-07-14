@@ -81,6 +81,11 @@ def get_post_by_post_id(post_id):
 
     return Post.query.filter(Post.post_id == post_id).first()
 
+def get_post_by_user_id(user_id):
+    """View post by user_id"""
+
+    return Post.query.filter(Post.user_id == user_id).all()
+
 def get_color_by_post_id(post_id):
     """Return the color of the max tone score for a given post"""
 

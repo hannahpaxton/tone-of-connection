@@ -162,6 +162,29 @@ def all_tone_qualities():
 
     return render_template('all_tone_qualities.html', tone_qualities=tone_qualities)
 
+# React routes
+
+@app.route("/react-test")
+def show_react_test():
+
+    return render_template('posts.html')
+
+@app.route("/posts.json")
+def get_posts_json():
+    """Return a JSON response with all of a user's posts."""
+
+    posts = [
+        {
+            "postId": post.post_id,
+            "postText": post.post_text,
+            "lat": post.lat,
+            "dateCreated": post.created_at,
+        }
+        for post in crud.get_post_by_user_id(session['user_id'])
+    ]
+
+    return jsonify(posts)
+
 # Map routes
 
 @app.route('/map')
