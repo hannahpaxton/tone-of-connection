@@ -124,7 +124,7 @@ def analyze_post(post):
             tone_quality = get_tone_by_tone_name(tone_name)
 
             score = tone_results["score"]
-            score_conversion_delta = .5 - (score / 2)
+            score_conversion_delta = .8 - (score / 1.2)
             luminance_value = str(.5 + score_conversion_delta)
             c1 = Color(tone_quality.hex_base_value)
             c1.luminance = luminance_value
