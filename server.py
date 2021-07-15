@@ -164,11 +164,6 @@ def all_tone_qualities():
 
 # React routes
 
-@app.route("/react-test")
-def show_react_test():
-
-    return render_template('posts.html')
-
 @app.route("/posts.json")
 def get_posts_json():
     """Return a JSON response with all of a user's posts."""

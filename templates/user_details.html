@@ -5,24 +5,15 @@
 
 {% endblock %}
 
+{% block js %}
+<script src="/static/js/postCards.jsx" type="text/jsx"></script>
+{% endblock %}
+
 {% block body %}
 <h1>{{ user.username }}</h1>
 
 <h2>My Posts</h2>
 
-<ul>
-    {% for post in user.posts %}
-        <li>
-        {{ post.post_text }}: 
-          <ul>
-            {% for result in post.tone_results %}
-                <li> {{ result.tone_quality }} 
-                    <div style="height:20px; width:20px; background-color: {{ result.hex_value }}"></div> 
-                </li>
-            {% endfor %}
-          </ul>
-        </li>
-    {% endfor %}
-</ul>
+<div id="all-posts" class="grid"></div>
 
 {% endblock %}

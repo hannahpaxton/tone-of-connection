@@ -1,0 +1,34 @@
+{% extends 'base_log.html' %}
+
+{% block title %}Post Results{% endblock %}
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>This is your post</h1>
+
+<section id="display-post">
+    <h3>Post Info</h3>
+
+    <dl>
+        <dt>Post</dt>
+        <dd id="post_text">{{ post.post_text }}</dd>
+
+        <dt>Location</dt>
+        <dd id="post_location">{{ location_result["results"][0]["address_components"]["city"] }}, {{ location_result["results"][0]["address_components"]["state"] }}</dd>
+
+        <dt>Date</dt>
+        <dd id="post_date">{{ user_facing_date }}</dd>
+
+        <dt>Tone Result</dt>
+        <dd>
+            <div id="post_tone">
+            </div>
+        </dd>
+    </dl>
+</section>
+
+<script> const postID = {{ post.post_id }}</script>
+<script src="/static/js/analyze_post.js"></script>
+{% endblock %}

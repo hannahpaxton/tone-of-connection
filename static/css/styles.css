@@ -29,16 +29,21 @@ li a {
 .grid {
     display: grid;
     grid-template-columns: 3fr 3fr 3fr 3fr;
-    grid-gap: 20px;
+    grid-gap: 10px;
     align-items: center;
   }
   
   div.post {
     border-radius: 3px;
-    border: 3px solid black;
-    width: 16em;
-    height: 25em;
+    border: 2px solid grey;
+    width: 32em;
+    height: 40em;
     margin: 2em;
     padding: 1em;
     display: inline-block;
+  }
+
+  #user_post {
+      width: 32em;
+      height: 40em;
   }
