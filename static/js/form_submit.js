@@ -10,14 +10,13 @@
         let postShouldSubmit = false
         let zipShouldSubmit = false
         
-        // NOT accurately assessing post value
-        if (post.value === null) {
+        if (post.value === "") {
           postShouldSubmit = false
         } else {
           postShouldSubmit = true
         }
-        
-        // accurately assessing zip value
+   
+        // accurately assessing zip value, need to check for correct zip, not just 5 digits
         if (zip.value.length !== 5) {
           zipShouldSubmit = false
         } else {
@@ -31,10 +30,10 @@
             alert("Write something! Enter a valid post.")
             evt.preventDefault();
         } else if (!zipShouldSubmit && postShouldSubmit) {
-            alert("Enter a valid ZIP code");
+            alert("Where are you at again? Enter a valid ZIP code");
             evt.preventDefault(); 
         } else {
-            alert("Valid ZIP AND post text");
+            alert("Sorry! Enter a valid ZIP code and valid post");
             evt.preventDefault();
         }
     })
