@@ -10,29 +10,32 @@
         let postShouldSubmit = false
         let zipShouldSubmit = false
         
-        if (!post.value) {
+        // NOT accurately assessing post value
+        if (post.value === null) {
           postShouldSubmit = false
         } else {
           postShouldSubmit = true
         }
-        console.log(post)
         
-        if (zip.length !== 5) {
+        // accurately assessing zip value
+        if (zip.value.length !== 5) {
           zipShouldSubmit = false
         } else {
           zipShouldSubmit = true
         }
-        console.log(zip)
         
-        console.log(zip.length);
+        // preventing the zip if it's not 5 digits long
         if (zipShouldSubmit && postShouldSubmit) {
             postForm.onsubmit()
         } else if (zipShouldSubmit && !postShouldSubmit)  {
             alert("Write something! Enter a valid post.")
+            evt.preventDefault();
         } else if (!zipShouldSubmit && postShouldSubmit) {
-            alert("Enter a valid ZIP code") 
+            alert("Enter a valid ZIP code");
+            evt.preventDefault(); 
         } else {
-            alert("Valid ZIP AND post text")
+            alert("Valid ZIP AND post text");
+            evt.preventDefault();
         }
     })
 

@@ -8,15 +8,13 @@
 {% block body %}
 
 <h2>What do you want to say?</h2>
-<form action="/input" method="POST" id="postform" onsubmit="event.preventDefault()">
+<form action="/input" method="POST" id="postform">
 
-  <div id="user_post">
-    <label for="postfield">My Thoughts</label>
-    <input id="postfield" type="text" name="mypost" required="required" />
-  </div>
+  <textarea id="postfield" name="user_post" rows="20" cols="50">
+  </textarea>
 
   <div>
-      <label for="zipfield">What's your ZIP Code?</label>
+      <label>What's your ZIP Code?</label>
       <input id="zipfield" type="text" name="zipcode" required="required" />
   </div>
 

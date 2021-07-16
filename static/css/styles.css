@@ -28,7 +28,7 @@ li a {
 
 .grid {
     display: grid;
-    grid-template-columns: 3fr 3fr 3fr 3fr;
+    grid-template-columns: 6fr 6fr;
     grid-gap: 10px;
     align-items: center;
   }
@@ -43,7 +43,3 @@ li a {
     display: inline-block;
   }
 
-  #user_post {
-      width: 32em;
-      height: 40em;
-  }
