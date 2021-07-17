@@ -81,15 +81,10 @@ def get_post_by_post_id(post_id):
 
     return Post.query.filter(Post.post_id == post_id).first()
 
-def get_tone_quality_by_post_id(post_id):
+def get_tone_qualities_by_post_id(post_id):
     """View tone quality by post_id"""
 
-    return db.session.query(Result.tone_quality).filter(Result.post_id == post_id).all()
-
-def get_hex_value_by_post_id(post_id):
-    """View hex value by post_id"""
-
-    return db.session.query(Result.hex_value).filter(Result.post_id == post_id).all()
+    return db.session.query(Result.tone_quality, Result.hex_value, Result.tone_id).filter(Result.post_id == post_id).all()
 
 def get_post_by_user_id(user_id):
     """View post by user_id"""

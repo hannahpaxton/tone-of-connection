@@ -4,8 +4,13 @@ function PostDetail(props) {
         <p> Post: {props.postText} </p>
         <p> Location: {props.lat} </p>
         <p> Date: {props.dateCreated} </p>
-        <p> Tone Quality: {props.toneQuality} </p>
-        <p> Hex Value: {props.hexValue} </p>
+        <div> Tone Qualities: {props.toneQualities.map(tone => 
+          <div key={tone[2]}>
+            <div style={{height:"20px", width:"20px", backgroundColor:tone[1], float: "left"}}></div>
+            <div style={{paddingLeft:"30px"}}>{tone[0]}</div>
+          </div>
+          ) } 
+        </div>
       </div>
     );
   }
@@ -25,7 +30,6 @@ function PostDetailsContainer() {
     }, []);
 
     const postDetails = [];
-    const foo = document.createElement('div');
 
     for (const currentPost of posts) {
         postDetails.push(
@@ -34,8 +38,7 @@ function PostDetailsContainer() {
                 lat={currentPost.lat}
                 key={currentPost.postId}
                 postText={currentPost.postText}
-                toneQuality={currentPost.toneQuality}
-                hexValue={currentPost.hexValue}
+                toneQualities={currentPost.toneQualities}
             />
         );
     }

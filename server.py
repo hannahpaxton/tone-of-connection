@@ -181,9 +181,7 @@ def get_posts_json():
             "postText": post.post_text,
             "lat": post.lat,
             "dateCreated": post.created_at,
-            "toneQuality": crud.get_tone_quality_by_post_id(post.post_id),
-            "hexValue": crud.get_hex_value_by_post_id(post.post_id),
-
+            "toneQualities": crud.get_tone_qualities_by_post_id(post.post_id),
         }
         for post in crud.get_post_by_user_id(session['user_id'])
     ]
