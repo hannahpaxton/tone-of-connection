@@ -81,15 +81,25 @@ def get_post_by_post_id(post_id):
 
     return Post.query.filter(Post.post_id == post_id).first()
 
+def get_tone_quality_by_post_id(post_id):
+    """View tone quality by post_id"""
+
+    return db.session.query(Result.tone_quality).filter(Result.post_id == post_id).all()
+
+def get_hex_value_by_post_id(post_id):
+    """View hex value by post_id"""
+
+    return db.session.query(Result.hex_value).filter(Result.post_id == post_id).all()
+
 def get_post_by_user_id(user_id):
     """View post by user_id"""
 
     return Post.query.filter(Post.user_id == user_id).all()
 
-def get_color_by_post_id(post_id):
+def get_max_color_by_post_id(post_id):
     """Return the color of the max tone score for a given post"""
 
-    ordered_records = db.session.query(Result).filter(Result.post_id==post_id).order_by(Result.tone_score.desc()).all()
+    ordered_records = db.session.query(Result).filter(Result.post_id == post_id).order_by(Result.tone_score.desc()).all()
     if ordered_records:
         return ordered_records[0].hex_value
     else:

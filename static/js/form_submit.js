@@ -1,7 +1,5 @@
 "use strict";
 
-// function submitValidForms () {
-
     const postForm = document.getElementById('postform');
     const post = document.getElementById("postfield");
     const zip = document.querySelector('input[name="zipcode"]');
@@ -25,7 +23,7 @@
         
         // preventing the zip if it's not 5 digits long
         if (zipShouldSubmit && postShouldSubmit) {
-            postForm.onsubmit()
+            postForm.submit()
         } else if (zipShouldSubmit && !postShouldSubmit)  {
             alert("Write something! Enter a valid post.")
             evt.preventDefault();
@@ -41,15 +39,5 @@
 
 
 
-    // zipForm.addEventListener('submit', (evt) => {
-
-    //     // Need a way to validate ZIP code
-    //     if (zip.length !== 5) {
-    //         alert("Valid ZIP Code needed for submission");
-    //         evt.preventDefault();
-    //     } else {
-    //         zipForm.submit();
-    //     }
-    // });
 
 

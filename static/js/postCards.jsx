@@ -4,6 +4,8 @@ function PostDetail(props) {
         <p> Post: {props.postText} </p>
         <p> Location: {props.lat} </p>
         <p> Date: {props.dateCreated} </p>
+        <p> Tone Quality: {props.toneQuality} </p>
+        <p> Hex Value: {props.hexValue} </p>
       </div>
     );
   }
@@ -23,6 +25,7 @@ function PostDetailsContainer() {
     }, []);
 
     const postDetails = [];
+    const foo = document.createElement('div');
 
     for (const currentPost of posts) {
         postDetails.push(
@@ -31,11 +34,14 @@ function PostDetailsContainer() {
                 lat={currentPost.lat}
                 key={currentPost.postId}
                 postText={currentPost.postText}
+                toneQuality={currentPost.toneQuality}
+                hexValue={currentPost.hexValue}
             />
         );
     }
 
     return <React.Fragment>{postDetails}</React.Fragment>;
+
 }
 
 ReactDOM.render(<PostDetailsContainer />, document.getElementById("all-posts"));

@@ -8,6 +8,9 @@ var map = new mapboxgl.Map({
     zoom: 3 // starting zoom
 });
 
+map.scrollZoom.disable();
+map.addControl(new mapboxgl.NavigationControl());
+map.doubleClickZoom.disable();
 
 $.get('/api/posts', (posts) => {
     for (const post of posts) {

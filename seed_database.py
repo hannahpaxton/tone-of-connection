@@ -19,7 +19,6 @@ for n in range(10):
     
     user = crud.create_user(username, password, email)
 
-
 possible_tone_qualities = {
     'Anger': {
         'hex_base_value': '#ff0000',

@@ -1,3 +1,6 @@
+html * {
+    font-family: 'Inconsolata', monospace;
+}
 
 #map { 
     width: auto;
@@ -34,7 +37,7 @@ li a {
   }
   
   div.post {
-    border-radius: 3px;
+    border-radius: 4%;
     border: 2px solid grey;
     width: 32em;
     height: 40em;

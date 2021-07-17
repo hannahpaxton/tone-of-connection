@@ -108,10 +108,16 @@ def create_post():
     lat = location_result["results"][0]["location"]["lat"]
     lng = location_result["results"][0]["location"]["lng"]
 
+    # Add city and state to database
+    # city = location_result["results"][0]["address_components"]["city"]
+    # state = location_result["results"][0]["address_components"]["state"]
+    # user_facing_location = city + state
+
     # Create post timestamp
     created_at = datetime.now()
     user_facing_date = created_at.strftime("%B %d, %Y")
 
+    # Save user facing location to database 
     # Save post and related data to database
     post = crud.create_post(session['user_id'], post_text, lat, lng, created_at)
 
@@ -147,7 +153,7 @@ def post_info():
             "lat": post.lat,
             "lng": post.lng,
             "created_at": post.created_at,
-            "color": crud.get_color_by_post_id(post.post_id)
+            "color": crud.get_max_color_by_post_id(post.post_id),
         }
         for post in Post.query.limit(200)
     ]
@@ -168,12 +174,16 @@ def all_tone_qualities():
 def get_posts_json():
     """Return a JSON response with all of a user's posts."""
 
+
     posts = [
         {
             "postId": post.post_id,
             "postText": post.post_text,
             "lat": post.lat,
             "dateCreated": post.created_at,
+            "toneQuality": crud.get_tone_quality_by_post_id(post.post_id),
+            "hexValue": crud.get_hex_value_by_post_id(post.post_id),
+
         }
         for post in crud.get_post_by_user_id(session['user_id'])
     ]
