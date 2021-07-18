@@ -17,7 +17,7 @@ $.get('/api/posts', (posts) => {
         var postMarker = new mapboxgl.Marker({
             color: post.color,
         }).setLngLat([post.lng, post.lat])
-        .setPopup(new mapboxgl.Popup().setHTML('<h6>' + post.prompt + '</h6><p>' + post.post_text + '</p>'))
+        .setPopup(new mapboxgl.Popup().setHTML('<strong>' + post.prompt + '</strong><p>' + post.post_text + '</p>'))
         .addTo(map); 
     }
 });
