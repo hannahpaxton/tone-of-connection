@@ -155,6 +155,7 @@ def post_info():
         {
             "post_id": post.post_id,
             "user_id": post.user_id,
+            "prompt": crud.get_prompt_by_prompt_id(post.prompt_id),
             "post_text": post.post_text,
             "lat": post.lat,
             "lng": post.lng,

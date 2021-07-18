@@ -71,6 +71,12 @@ def get_random_prompt():
 
     return db.session.query(Prompt).order_by(func.random()).limit(1).one()
 
+def get_prompt_by_prompt_id(prompt_id):
+    """View prompt by prompt_id"""
+ 
+    used_prompt = db.session.query(Prompt.prompt).filter(Prompt.prompt_id == prompt_id).one()
+    return used_prompt[0]
+
 def create_tone_quality(tone_quality, hex_base_value):
     """Create and return all tone quality possibilities"""
 
