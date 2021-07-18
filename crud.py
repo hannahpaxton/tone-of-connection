@@ -37,10 +37,10 @@ def get_user_by_password(email,password):
 
     return User.query.filter(User.password == password, User.email == email).first()
 
-def create_post(user_id, post_text, lat, lng, created_at):
+def create_post(user_id, prompt_id, post_text, lat, lng, user_facing_location, created_at):
     """Create and return a user post"""
 
-    post = Post(user_id=user_id, post_text=post_text, lat=lat, lng=lng, user_facing_location=user_facing_location, created_at=created_at)
+    post = Post(user_id=user_id, prompt_id=prompt_id, post_text=post_text, lat=lat, lng=lng, user_facing_location=user_facing_location, created_at=created_at)
 
     db.session.add(post)
     db.session.commit()

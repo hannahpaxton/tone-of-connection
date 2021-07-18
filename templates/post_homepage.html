@@ -9,6 +9,9 @@
 
 <h2>{{ random_prompt.prompt }}</h2>
 <form action="/input" method="POST" id="postform">
+  <div>
+    <input type="hidden" name="prompt_id" value={{ random_prompt.prompt_id }}>
+  </div>
 
   <textarea id="postfield" name="user_post" rows="20" cols="50"></textarea>
 

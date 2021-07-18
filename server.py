@@ -101,6 +101,9 @@ def post_home():
 def create_post():
     """Create a post and save in database"""
 
+    #Get prompt id
+    prompt_id = request.form.get('prompt_id')
+
     # Get post text
     post_text = request.form.get('user_post')
 
@@ -122,9 +125,9 @@ def create_post():
 
     # Save user facing location to database 
     # Save post and related data to database
-    post = crud.create_post(session['user_id'], post_text, lat, lng, user_facing_location, created_at)
+    post = crud.create_post(session['user_id'], prompt_id, post_text, lat, lng, user_facing_location, created_at)
 
-    return render_template('post_data.html', post=post, location_result=location_result, user_facing_date=user_facing_date)
+    return render_template('post_data.html', post=post, user_facing_location=user_facing_location, user_facing_date=user_facing_date)
   
 @app.route('/api/tone/<int:post_id>')
 def tone_info(post_id):
