@@ -93,9 +93,9 @@ def show_user(user_id):
 def post_home():
     """View post home"""
 
-    # prompt = crud.get_random_prompt
+    random_prompt = crud.get_random_prompt()
 
-    return render_template('post_homepage.html')
+    return render_template('post_homepage.html', random_prompt=random_prompt)
 
 @app.route('/input', methods=['POST'])
 def create_post():

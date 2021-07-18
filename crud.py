@@ -2,7 +2,7 @@
 
 from model import db, User, Post, Result, Quality, Prompt, connect_to_db
 from datetime import datetime
-from sqlalchemy import func
+from sqlalchemy import func, select
 import os
 import json
 from colour import Color
@@ -66,15 +66,10 @@ def create_prompt(prompt):
 
     return prompt
 
-# def get_random_prompt():
-#     """Get random prompt from the database"""
+def get_random_prompt():
+    """Get random prompt from the database"""
 
-#     prompt = Prompt(prompt=prompt)
-
-#     db.session.add(prompt)
-#     db.session.commit()
-
-#     return prompt
+    return db.session.query(Prompt).order_by(func.random()).limit(1).one()
 
 def create_tone_quality(tone_quality, hex_base_value):
     """Create and return all tone quality possibilities"""
