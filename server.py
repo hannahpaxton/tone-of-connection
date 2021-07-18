@@ -92,6 +92,9 @@ def show_user(user_id):
 @app.route('/post')
 def post_home():
     """View post home"""
+
+    # prompt = crud.get_random_prompt
+
     return render_template('post_homepage.html')
 
 @app.route('/input', methods=['POST'])
@@ -109,9 +112,9 @@ def create_post():
     lng = location_result["results"][0]["location"]["lng"]
 
     # Add city and state to database
-    # city = location_result["results"][0]["address_components"]["city"]
-    # state = location_result["results"][0]["address_components"]["state"]
-    # user_facing_location = city + state
+    city = location_result["results"][0]["address_components"]["city"]
+    state = location_result["results"][0]["address_components"]["state"]
+    user_facing_location = city + ", " + state
 
     # Create post timestamp
     created_at = datetime.now()
@@ -119,7 +122,7 @@ def create_post():
 
     # Save user facing location to database 
     # Save post and related data to database
-    post = crud.create_post(session['user_id'], post_text, lat, lng, created_at)
+    post = crud.create_post(session['user_id'], post_text, lat, lng, user_facing_location, created_at)
 
     return render_template('post_data.html', post=post, location_result=location_result, user_facing_date=user_facing_date)
   
@@ -179,7 +182,7 @@ def get_posts_json():
         {
             "postId": post.post_id,
             "postText": post.post_text,
-            "lat": post.lat,
+            "location": post.user_facing_location,
             "dateCreated": post.created_at,
             "toneQualities": crud.get_tone_qualities_by_post_id(post.post_id),
         }

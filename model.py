@@ -49,6 +49,7 @@ class Post(db.Model):
     post_text = db.Column(db.String)
     lat = db.Column(db.Float(10))
     lng = db.Column(db.Float(10))
+    user_facing_location = db.Column(db.String)
     created_at = db.Column(db.DateTime)
 
     tone_results = db.relationship('Result', backref='post')

@@ -2,7 +2,7 @@ function PostDetail(props) {
     return (
       <div className="post">
         <p> Post: {props.postText} </p>
-        <p> Location: {props.lat} </p>
+        <p> Location: {props.location} </p>
         <p> Date: {props.dateCreated} </p>
         <div> Tone Qualities: {props.toneQualities.map(tone => 
           <div key={tone[2]}>
@@ -35,7 +35,7 @@ function PostDetailsContainer() {
         postDetails.push(
             <PostDetail
                 dateCreated={currentPost.dateCreated}
-                lat={currentPost.lat}
+                location={currentPost.location}
                 key={currentPost.postId}
                 postText={currentPost.postText}
                 toneQualities={currentPost.toneQualities}
