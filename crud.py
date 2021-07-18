@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Post, Result, Quality, connect_to_db
+from model import db, User, Post, Result, Quality, Prompt, connect_to_db
 from datetime import datetime
 from sqlalchemy import func
 import os
@@ -55,6 +55,16 @@ def create_result(post_id, tone_quality, tone_score, hex_value):
     db.session.commit()
 
     return result
+
+def create_prompt(prompt):
+    """Create and return all post prompts"""
+
+    prompt = Prompt(prompt=prompt)
+
+    db.session.add(prompt)
+    db.session.commit()
+
+    return prompt
 
 def create_tone_quality(tone_quality, hex_base_value):
     """Create and return all tone quality possibilities"""

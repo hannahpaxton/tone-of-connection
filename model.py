@@ -44,12 +44,15 @@ class Post(db.Model):
                 primary_key=True)
     user_id = db.Column(db.Integer,
     db.ForeignKey('users.user_id'))
+    prompt_id = db.Column(db.Integer,
+    db.ForeignKey('prompts.prompt_id'))
     post_text = db.Column(db.String)
     lat = db.Column(db.Float(10))
     lng = db.Column(db.Float(10))
     created_at = db.Column(db.DateTime)
 
     tone_results = db.relationship('Result', backref='post')
+    prompt = db.relationship('Prompt', backref='post')
     # user (comes from backref in posts)
 
     def __repr__(self):
@@ -80,7 +83,6 @@ class Quality(db.Model):
     """All possible tone qualities that can be produced."""
 
     __tablename__ = 'tone_qualities'
-# Could possibly add description
     tone_quality = db.Column(db.String,
                 unique=True,
                 primary_key=True)
@@ -89,7 +91,21 @@ class Quality(db.Model):
     # tone_results (comes from backref in tone_qualities)
 
     def __repr__(self):
-        return f'<Quality tone_quality={self.tone_quality} hsl_value={self.hsl_value}>'
+        return f'<Quality tone_quality={self.tone_quality} hex_base_value={self.hex_base_value}>'
+
+class Prompt(db.Model):
+    """All possible post prompts."""
+
+    __tablename__ = 'prompts'
+    prompt_id = db.Column(db.Integer,
+                autoincrement=True,
+                primary_key=True)
+    prompt = db.Column(db.String)
+
+    # post (comes from backref in prompts)
+
+    def __repr__(self):
+        return f'<Prompt prompt_id={self.prompt_id}>'
 
 if __name__ == '__main__':
     # from server import app
