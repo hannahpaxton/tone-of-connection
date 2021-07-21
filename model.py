@@ -71,7 +71,7 @@ class Result(db.Model):
     db.ForeignKey('posts.post_id'))
     tone_quality = db.Column(db.String,
     db.ForeignKey('tone_qualities.tone_quality'))
-    tone_score = db.Column(db.Float)
+    tone_score = db.Column(db.Float(4))
     hex_value = db.Column(db.String)
 
     tone_qualities = db.relationship('Quality', backref='tone_results')

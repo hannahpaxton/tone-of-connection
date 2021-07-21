@@ -5,7 +5,7 @@ function showToneData (toneData) {
         const newDiv = document.createElement("div");
             const toneQuality = document.createTextNode(data.tone_quality + ", ");
                 newDiv.append(toneQuality);
-            const toneScore = document.createTextNode(data.tone_score + ", ");
+            const toneScore = document.createTextNode(data.tone_score + "%");
                 newDiv.append(toneScore);
             const hexValue = document.createElement("div")
                 hexValue.style.backgroundColor=data.hex_value;

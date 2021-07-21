@@ -105,7 +105,7 @@ def get_post_by_post_id(post_id):
 def get_tone_qualities_by_post_id(post_id):
     """View tone quality by post_id"""
 
-    return db.session.query(Result.tone_quality, Result.hex_value, Result.tone_id).filter(Result.post_id == post_id).all()
+    return db.session.query(Result.tone_quality, Result.hex_value, Result.tone_id, Result.tone_score).filter(Result.post_id == post_id).all()
 
 def get_post_by_user_id(user_id):
     """View post by user_id"""
@@ -156,7 +156,10 @@ def analyze_post(post):
             c1.luminance = luminance_value
             unique_hex_value = c1.hex
 
-            result = create_result(post.post_id, tone_name, score, unique_hex_value)
+            score_percentage = (100 * score)
+            user_facing_score = "{:.2f}".format(score_percentage)
+
+            result = create_result(post.post_id, tone_name, user_facing_score, unique_hex_value)
             final_results.append(result)
     return final_results
     
