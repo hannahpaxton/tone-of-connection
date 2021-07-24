@@ -4,7 +4,8 @@
     const post = document.getElementById("postfield");
     const zip = document.querySelector('input[name="zipcode"]');
 
-    postForm.addEventListener('submit', (evt) => {
+    postForm.addEventListener('submit', async (evt) => {
+        evt.preventDefault();
         let postShouldSubmit = false
         let zipShouldSubmit = false
         
@@ -12,29 +13,34 @@
           postShouldSubmit = false
         } else {
           postShouldSubmit = true
+        };
+
+        if (zip.value.length === 5) {
+          const response = await fetch('/geocode?zipcode='+ encodeURIComponent(zip.value)) 
+          const data = await response.json()
+          console.log(data.results)
+          if (Array.isArray(data.results)) {
+            zipShouldSubmit = true
+            console.log(zipShouldSubmit)
+          } else {
+            zipShouldSubmit = false
+            console.log(zipShouldSubmit)
+          }
         }
-   
-        // accurately assessing zip value, need to check for correct zip, not just 5 digits
-        if (zip.value.length !== 5) {
-          zipShouldSubmit = false
-        } else {
-          zipShouldSubmit = true
-        }
-        
-        // preventing the zip if it's not 5 digits long
+
         if (zipShouldSubmit && postShouldSubmit) {
-            postForm.submit()
+          postForm.submit()
         } else if (zipShouldSubmit && !postShouldSubmit)  {
-            alert("Write something! Enter a valid post.")
-            evt.preventDefault();
+          alert("Write something! Enter a post.")
         } else if (!zipShouldSubmit && postShouldSubmit) {
-            alert("Where are you at again? Enter a valid ZIP code");
-            evt.preventDefault(); 
+          alert("Where are you at again? Enter a valid 5 digit ZIP code");
         } else {
-            alert("Sorry! Enter a valid ZIP code and valid post");
-            evt.preventDefault();
-        }
-    })
+          alert("Sorry! Enter a valid 5 digit ZIP code and a post");
+        } 
+        
+    });
+
+
 
 
 

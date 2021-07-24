@@ -97,6 +97,25 @@ def post_home():
 
     return render_template('post_homepage.html', random_prompt=random_prompt)
 
+@app.route('/geocode')
+def geocode_zip():
+    """Geocode a user's zipcode"""
+
+    # Get user location 
+    zipcode = request.args.get('zipcode')
+    location_result = client.geocode(zipcode)
+
+    return jsonify(location_result)
+
+    # lat = location_result["results"][0]["location"]["lat"]
+    # lng = location_result["results"][0]["location"]["lng"]
+
+    # # Add city and state to database
+    # city = location_result["results"][0]["address_components"]["city"]
+    # state = location_result["results"][0]["address_components"]["state"]
+    # user_facing_location = city + ", " + state
+
+
 @app.route('/input', methods=['POST'])
 def create_post():
     """Create a post and save in database"""
@@ -107,17 +126,21 @@ def create_post():
     # Get post text
     post_text = request.form.get('user_post')
 
-    # Get user location 
-    zipcode = request.form.get('zipcode')
-    location_result = client.geocode(zipcode)
+    # # Get user location 
+    # zipcode = request.form.get('zipcode')
+    # location_result = client.geocode(zipcode)
 
-    lat = location_result["results"][0]["location"]["lat"]
-    lng = location_result["results"][0]["location"]["lng"]
+    # lat = location_result["results"][0]["location"]["lat"]
+    # lng = location_result["results"][0]["location"]["lng"]
+    lat = 5
+    lng = 6
 
-    # Add city and state to database
-    city = location_result["results"][0]["address_components"]["city"]
-    state = location_result["results"][0]["address_components"]["state"]
-    user_facing_location = city + ", " + state
+    user_facing_location = "Test"
+
+    # # Add city and state to database
+    # city = location_result["results"][0]["address_components"]["city"]
+    # state = location_result["results"][0]["address_components"]["state"]
+    # user_facing_location = city + ", " + state
 
     # Create post timestamp
     created_at = datetime.now()

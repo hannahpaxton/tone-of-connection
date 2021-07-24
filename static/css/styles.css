@@ -44,5 +44,6 @@ li a {
     margin: 2em;
     padding: 1em;
     display: inline-block;
+    overflow: hidden;
   }
 
