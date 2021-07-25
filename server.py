@@ -105,16 +105,14 @@ def geocode_zip():
     zipcode = request.args.get('zipcode')
     location_result = client.geocode(zipcode)
 
+    session['lat'] = location_result["results"][0]["location"]["lat"]
+    session['lng']= location_result["results"][0]["location"]["lng"]
+
+    city = location_result["results"][0]["address_components"]["city"]
+    state = location_result["results"][0]["address_components"]["state"]
+    session['user_facing_location'] = city + ", " + state
+
     return jsonify(location_result)
-
-    # lat = location_result["results"][0]["location"]["lat"]
-    # lng = location_result["results"][0]["location"]["lng"]
-
-    # # Add city and state to database
-    # city = location_result["results"][0]["address_components"]["city"]
-    # state = location_result["results"][0]["address_components"]["state"]
-    # user_facing_location = city + ", " + state
-
 
 @app.route('/input', methods=['POST'])
 def create_post():
@@ -126,16 +124,13 @@ def create_post():
     # Get post text
     post_text = request.form.get('user_post')
 
-    # # Get user location 
-    # zipcode = request.form.get('zipcode')
-    # location_result = client.geocode(zipcode)
+    # Unpack user location 
 
     # lat = location_result["results"][0]["location"]["lat"]
     # lng = location_result["results"][0]["location"]["lng"]
-    lat = 5
-    lng = 6
+    # lat = 5
+    # lng = 6
 
-    user_facing_location = "Test"
 
     # # Add city and state to database
     # city = location_result["results"][0]["address_components"]["city"]
@@ -148,9 +143,9 @@ def create_post():
 
     # Save user facing location to database 
     # Save post and related data to database
-    post = crud.create_post(session['user_id'], prompt_id, post_text, lat, lng, user_facing_location, created_at)
+    post = crud.create_post(session['user_id'], prompt_id, post_text, session['lat'], session['lng'], session['user_facing_location'], created_at)
 
-    return render_template('post_data.html', post=post, user_facing_location=user_facing_location, user_facing_date=user_facing_date)
+    return render_template('post_data.html', post=post, user_facing_date=user_facing_date)
   
 @app.route('/api/tone/<int:post_id>')
 def tone_info(post_id):
