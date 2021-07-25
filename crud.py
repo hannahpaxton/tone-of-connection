@@ -2,7 +2,7 @@
 
 from model import db, User, Post, Result, Quality, Prompt, connect_to_db
 from datetime import datetime
-from sqlalchemy import func, select
+from sqlalchemy import func, select, desc
 import os
 import json
 from colour import Color
@@ -110,7 +110,7 @@ def get_tone_qualities_by_post_id(post_id):
 def get_post_by_user_id(user_id):
     """View post by user_id"""
 
-    return Post.query.filter(Post.user_id == user_id).all()
+    return Post.query.filter(Post.user_id == user_id).order_by(desc(Post.created_at)).all()
 
 def get_max_color_by_post_id(post_id):
     """Return the color of the max tone score for a given post"""

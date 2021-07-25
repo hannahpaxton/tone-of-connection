@@ -5,7 +5,7 @@ function PostDetail(props) {
         <p><strong>Date:</strong> {props.dateCreated} </p>
         <div><strong>Tone Qualities:</strong> {props.toneQualities.map(tone => 
           <div key={tone[2]}>
-            <div style={{height:"20px", width:"20px", backgroundColor:tone[1], float: "left"}}></div>
+            <div style={{height:"20px", width:"20px", backgroundColor:tone[1], borderRadius: "100%", float: "left"}}></div>
             <div style={{display: "inline-block", paddingLeft:"20px"}}>{tone[0]}</div>
             <div style={{display: "inline-block", paddingLeft:"10px"}}>{tone[3] + "%"}</div>
           </div>

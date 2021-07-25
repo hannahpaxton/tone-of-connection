@@ -4,7 +4,7 @@ from flask import (Flask, render_template, request, flash, session,
                    redirect, jsonify)
 from model import connect_to_db, Post, Result
 import crud
-
+from sqlalchemy import desc
 from jinja2 import StrictUndefined
 from datetime import datetime
 import os
@@ -105,6 +105,7 @@ def geocode_zip():
     zipcode = request.args.get('zipcode')
     location_result = client.geocode(zipcode)
 
+    # Save needed geolocation in the session
     session['lat'] = location_result["results"][0]["location"]["lat"]
     session['lng']= location_result["results"][0]["location"]["lng"]
 
@@ -124,24 +125,10 @@ def create_post():
     # Get post text
     post_text = request.form.get('user_post')
 
-    # Unpack user location 
-
-    # lat = location_result["results"][0]["location"]["lat"]
-    # lng = location_result["results"][0]["location"]["lng"]
-    # lat = 5
-    # lng = 6
-
-
-    # # Add city and state to database
-    # city = location_result["results"][0]["address_components"]["city"]
-    # state = location_result["results"][0]["address_components"]["state"]
-    # user_facing_location = city + ", " + state
-
     # Create post timestamp
     created_at = datetime.now()
     user_facing_date = created_at.strftime("%B %d, %Y")
 
-    # Save user facing location to database 
     # Save post and related data to database
     post = crud.create_post(session['user_id'], prompt_id, post_text, session['lat'], session['lng'], session['user_facing_location'], created_at)
 
@@ -180,7 +167,7 @@ def post_info():
             "created_at": post.created_at,
             "color": crud.get_max_color_by_post_id(post.post_id),
         }
-        for post in Post.query.limit(200)
+        for post in Post.query.order_by(desc(Post.created_at)).limit(200)
     ]
 
     return jsonify(posts)

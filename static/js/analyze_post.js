@@ -5,6 +5,7 @@ function showToneData (toneData) {
         const newDiv = document.createElement("div");
             const hexValue = document.createElement("div")
                 hexValue.style.backgroundColor=data.hex_value;
+                hexValue.style.borderRadius="100%";
                 hexValue.style.height="20px"; 
                 hexValue.style.width="20px";
                 hexValue.style.float="left";
