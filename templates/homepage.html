@@ -2,14 +2,13 @@
 {% block title %}Tone of Connection{% endblock %}
 
 {% block body %}
-
+<div class="jumbotron vertical-center">
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6">
-        <h1>Some welcome text about the project, maybe a graphic</h1>
+        <h1 id="typing"></p>
       </div>
       <div class="col-12 col-md-6">
-        <h1>Tone of Connection</h1>
 
         <h2>Create an Account</h2>
         <form id="account_creation" action="/register" method="POST">
@@ -32,5 +31,7 @@
       </div>
     </div>
   </div>
+</div>
 
+<script src="/static/js/welcome.js"></script>
 {% endblock %}

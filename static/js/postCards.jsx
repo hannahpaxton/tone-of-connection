@@ -1,6 +1,6 @@
 function PostDetail(props) {
     return (
-      <div className="post">
+      <div className="post clearfix">
         <p><strong>Location:</strong> {props.location} </p>
         <p><strong>Date:</strong> {props.dateCreated} </p>
         <div><strong>Tone Qualities:</strong> {props.toneQualities.map(tone => 
