@@ -17,14 +17,14 @@
 
         if (zip.value.length === 5) {
           const response = await fetch('/geocode?zipcode='+ encodeURIComponent(zip.value)) 
+            if (response.status === 500){
+              alert("Where are you at again? Enter a valid 5 digit ZIP code");
+            }
           const data = await response.json()
-          console.log(data.results)
           if (Array.isArray(data.results)) {
             zipShouldSubmit = true
-            console.log(zipShouldSubmit)
           } else {
             zipShouldSubmit = false
-            console.log(zipShouldSubmit)
           }
         }
 
