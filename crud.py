@@ -82,7 +82,7 @@ def get_random_prompt():
 def get_prompt_by_prompt_id(prompt_id):
     """View prompt by prompt_id"""
  
-    used_prompt = db.session.query(Prompt.prompt).filter(Prompt.prompt_id == prompt_id).one()
+    used_prompt = db.session.query(Prompt.prompt).filter(Prompt.prompt_id == prompt_id).first()
     return used_prompt[0]
 
 def create_tone_quality(tone_quality, hex_base_value):
@@ -119,12 +119,6 @@ def get_post_by_user_id(user_id):
     """View post by user_id"""
 
     return Post.query.filter(Post.user_id == user_id).order_by(desc(Post.created_at)).all()
-
-def get_prompt_by_prompt_id(prompt_id):
-    """View prompt by prompt_id"""
-
-    return db.session.query(Prompt.prompt).filter(Prompt.prompt_id == prompt_id).one()
-
 
 def get_max_color_by_post_id(post_id):
     """Return the color of the max tone score for a given post"""

@@ -51,6 +51,7 @@ function PostDetailsContainer() {
                 location={currentPost.location}
                 key={currentPost.postId}
                 postText={currentPost.postText}
+                postPrompt={currentPost.postPrompt}
                 toneQualities={currentPost.toneQualities}
             />
         );
