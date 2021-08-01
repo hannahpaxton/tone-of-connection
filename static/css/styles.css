@@ -123,6 +123,10 @@ textarea {
     padding: 30px;;
 }
 
+.no_post {
+    padding-top:30px;
+}
+
 .grid {
     display: grid;
     grid-template-columns: 6fr 6fr;

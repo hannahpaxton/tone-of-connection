@@ -198,6 +198,7 @@ def get_all_posts_json():
     posts = [
         {
             "postId": post.post_id,
+            "postPrompt" : crud.get_prompt_by_prompt_id(post.prompt_id),
             "postText": post.post_text,
             "location": post.user_facing_location,
             "dateCreated": post.created_at,

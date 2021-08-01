@@ -1,6 +1,6 @@
 {% extends 'base_log.html' %}
 
-{% block title %}{{ user.username }} - Details{% endblock %}
+{% block title %}{{ user.username }}'s Journal{% endblock %}
 {% block head %}
 
 {% endblock %}
@@ -11,7 +11,7 @@
 
 {% block body %}
 <div class="container no_log">
-    <h1>{{ user.username }}'s Posts</h1>
+    <h1>{{ user.username }}'s Journal</h1>
     
     <form action="/posts_filtered"> 
     <div class="tone_filters">
@@ -37,7 +37,6 @@
     function getQuality(e) {
         var quality = e.getAttribute("id");
         document.getElementById("toneFilter").value = quality;
-        console.log(document.getElementById("toneFilter").value);
     }
 
 </script>

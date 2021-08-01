@@ -12,24 +12,26 @@ function PostDetail(props) {
           ) } 
         </div>
         <p></p>
-        <p><strong>Question:</strong> {props.postPrompt} </p>
-        <p><strong>Post:</strong> {props.postText} </p>
+        <p><strong>I Asked:</strong> {props.postPrompt} </p>
+        <p><strong>You Said:</strong> {props.postText} </p>
       </div>
     );
   }
 
 function PostDetailsContainer() {
     const [posts, setPosts] = React.useState([]);
-    const [filterStatus, setFilterStatus] = React.useState(null)
-
-
+    const [hasError, setHasError] = React.useState(false);
+ 
     React.useEffect(() => {
       const fetchPosts = () => {
         fetch("/posts.json")
         .then((response) => response.json())
         .then((data) => {
-          setPosts(data)});      
-      };
+          if (data.length === 0) {
+            setHasError(true);
+          }
+          setPosts(data)});    
+        };
 
       fetchPosts();
     }, []);
@@ -49,8 +51,11 @@ function PostDetailsContainer() {
         );
     }
 
+    if (hasError) {
+      return <p className="no_post">Looks like you haven't written anything yet. Go to <a href="/post">Create a Post</a> to fill up your journal!</p>
+    }
     return <React.Fragment>{postDetails}</React.Fragment>;
-
+    
 }
 
 ReactDOM.render(<PostDetailsContainer />, document.getElementById("all-posts"));

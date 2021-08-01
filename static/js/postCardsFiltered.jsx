@@ -13,8 +13,8 @@ function PostDetail(props) {
           ) } 
         </div>
         <p></p>
-        <p><strong>Question:</strong> {props.postPrompt} </p>
-        <p><strong>Post:</strong> {props.postText} </p>
+        <p><strong>I Asked:</strong> {props.postPrompt} </p>
+        <p><strong>You Said:</strong> {props.postText} </p>
       </div>
     );
   }
@@ -25,7 +25,7 @@ function useQuery() {
 
 function PostDetailsContainer() {
     const [posts, setPosts] = React.useState([]);
-    const [filterStatus, setFilterStatus] = React.useState(null)
+    const [hasError, setHasError] = React.useState(false);
 
     let toneFilter = useQuery().get('tone_filter_quality');
 
@@ -36,8 +36,11 @@ function PostDetailsContainer() {
         fetch(filteredJson)
         .then((response) => response.json())
         .then((data) => {
-          setPosts(data)});      
-      };
+          if (data.length === 0) {
+            setHasError(true);
+          }
+          setPosts(data)});    
+        };
 
       fetchPosts();
     }, []);
@@ -57,8 +60,12 @@ function PostDetailsContainer() {
         );
     }
 
+    if (hasError) {
+      return <p>I haven't detected you feeling {toneFilter.toLowerCase()} yet. Keep writing!</p>
+    }
     return <React.Fragment>{postDetails}</React.Fragment>;
 
 }
+
 
 ReactDOM.render(<PostDetailsContainer />, document.getElementById("all-posts"));
