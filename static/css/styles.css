@@ -3,29 +3,38 @@ html * {
     color: rgb(40, 38, 38);
 }
 
-@keyframes bgcolor {
+@keyframes shiftingcolor {
     0% {
-        background-color: #45a3e5
+        background-color: #a64dff
+    }
+    15% {
+        background-color: #4d4dff
     }
     30% {
-        background-color: #66bf39
+        background-color: #4dffff
+    }
+    45% {
+        background-color: #4dff4d
     }
     60% {
-        background-color: #eb670f
+        background-color: #ffe74d
+    }
+    75% {
+        background-color: #ffa04d
     }
     90% {
-        background-color: #f35
+        background-color: #ff4d4d
     }
     100% {
-        background-color: #864cbf
+        background-color: #ff4dff
     }
 }
 
 body {
     margin: 0;
     padding: 0; 
-    -webkit-animation: bgcolor 20s infinite;
-    animation: bgcolor 10s infinite;
+    -webkit-animation: shiftingcolor 20s infinite;
+    animation: shiftingcolor 10s infinite;
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
 }
@@ -73,6 +82,12 @@ li a {
     text-decoration: none;
 }
 
+.filters {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 a:hover {
     color: yellow;
 }
@@ -81,7 +96,11 @@ a:hover {
     min-height: 90vh;
     display: flex;
     align-items: center;
-  }
+}
+
+.no_log {
+    margin-top: 2%;
+}
   
 .row {
     background-color: #d1cfc7;
@@ -92,19 +111,29 @@ a:hover {
     padding: 140px 60px;
 }
 
+.prompt {
+    padding: 200px 60px;
+}
+
+textarea {
+    width: 100%;
+}
+
+.low_margin {
+    padding: 30px;;
+}
+
 .grid {
     display: grid;
     grid-template-columns: 6fr 6fr;
-    grid-gap: 10px;
-    align-items: center;
+    grid-gap: 40px;
+    align-items: baseline;
   }
 
   div.post {
     background-color: rgba(255,255,255,0.8);
     border-radius: 4%;
-    border: 2px solid grey;
-    margin: 3em;
-    padding: 1em;
+    padding: 1em; 
     height: 30em;
     display: table;
     content: "";

@@ -10,8 +10,37 @@
 {% endblock %}
 
 {% block body %}
-<h1>{{ user.username }}'s Posts</h1>
+<div class="container no_log">
+    <h1>{{ user.username }}'s Posts</h1>
+    
+    <form action="/posts_filtered"> 
+    <div class="tone_filters">
+        <input type="submit" id="Anger" value="Anger" onclick="getQuality(this)">
+          <input type="submit" id="Joy" value="Joy" onclick="getQuality(this)">
+          <input type="submit" id="Disgust" value="Disgust" onclick="getQuality(this)">
+          <input type="submit" id="Fear" value="Fear" onclick="getQuality(this)">
+          <input type="submit" id="Sadness" value="Sadness" onclick="getQuality(this)">
+          <input type="submit" id="Analytical" value="Analytical" onclick="getQuality(this)">
+          <input type="submit" id="Confident" value="Confident" onclick="getQuality(this)">
+          <input type="submit" id="Tentative" value="Tentative" onclick="getQuality(this)">
+    </div>
 
-<div id="all-posts" class="grid"></div>
+    <div>
+        <input type="hidden" id="toneFilter" name="tone_filter_quality" value="" ref="filter">
+    </div>
+    </form>
+
+    <div id="all-posts" class="grid"></div>
+</div>
+
+<script>
+    function getQuality(e) {
+        var quality = e.getAttribute("id");
+        document.getElementById("toneFilter").value = quality;
+        console.log(document.getElementById("toneFilter").value);
+    }
+
+</script>
+
 
 {% endblock %}

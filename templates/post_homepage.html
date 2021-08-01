@@ -6,23 +6,33 @@
 {% endblock %}
 
 {% block body %}
+<div class="container no_log">
+  <div class="row">
 
-<h2>{{ random_prompt.prompt }}</h2>
-<form action="/input" method="POST" id="postform">
-  <div>
-    <input type="hidden" name="prompt_id" value={{ random_prompt.prompt_id }}>
+    <div class="col-12 col-md-6 low_margin">
+      <h2 class="prompt">{{ random_prompt.prompt }}</h2>
+    </div>
+
+    <div class="col-12 col-md-6 low_margin">
+      <form action="/input" method="POST" id="postform">
+        <div>
+          <input type="hidden" name="prompt_id" value={{ random_prompt.prompt_id }}>
+        </div>
+
+        <textarea class="transparency_field" id="postfield" name="user_post" rows="18" cols="50"></textarea>
+
+        <div>
+            <label>What's your ZIP Code?</label>
+            <input class="transparency_field" id="zipfield" type="text" name="zipcode" />
+        </div>
+
+        <p>
+          <input class="button" type="submit"/>
+        </p>
+      </form>
+    </div>
+    
   </div>
-
-  <textarea class="transparency_field" id="postfield" name="user_post" rows="20" cols="50"></textarea>
-
-  <div>
-      <label>What's your ZIP Code?</label>
-      <input class="transparency_field" id="zipfield" type="text" name="zipcode" />
-  </div>
-
-  <p>
-    <input class="button" type="submit"/>
-  </p>
-</form>
+</div>
 
 {% endblock %}

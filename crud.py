@@ -37,6 +37,14 @@ def get_user_by_password(email,password):
 
     return User.query.filter(User.password == password, User.email == email).first()
 
+def get_post_by_tone_quality(user_id, tone_quality):
+    """Get posts by tone quality and user_id"""
+
+    needed_post_ids = db.session.query(Result.post_id).filter(Result.tone_quality == tone_quality).all()
+    needed_posts = db.session.query(Post).filter(Post.post_id.in_(needed_post_ids), Post.user_id == user_id).order_by(desc(Post.created_at)).all()
+    
+    return needed_posts
+    
 def create_post(user_id, prompt_id, post_text, lat, lng, user_facing_location, created_at):
     """Create and return a user post"""
 
@@ -103,7 +111,7 @@ def get_post_by_post_id(post_id):
     return Post.query.filter(Post.post_id == post_id).first()
 
 def get_tone_qualities_by_post_id(post_id):
-    """View tone quality by post_id"""
+    """View tone qualities by post_id"""
 
     return db.session.query(Result.tone_quality, Result.hex_value, Result.tone_id, Result.tone_score).filter(Result.post_id == post_id).all()
 
@@ -111,6 +119,12 @@ def get_post_by_user_id(user_id):
     """View post by user_id"""
 
     return Post.query.filter(Post.user_id == user_id).order_by(desc(Post.created_at)).all()
+
+def get_prompt_by_prompt_id(prompt_id):
+    """View prompt by prompt_id"""
+
+    return db.session.query(Prompt.prompt).filter(Prompt.prompt_id == prompt_id).one()
+
 
 def get_max_color_by_post_id(post_id):
     """Return the color of the max tone score for a given post"""

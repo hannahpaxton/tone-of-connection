@@ -1,7 +1,7 @@
 "use strict";
 
 var i = 0;
-var copy = "This is Tone of Connection - an anonomous journal that analyzes your mood and translates it to color";
+var copy = "This is Tone of Connection - an anonymous journal that analyzes your mood and translates it to color";
 var speed = 50;
 
 function typingAnimation() {
@@ -11,8 +11,5 @@ function typingAnimation() {
         setTimeout(typingAnimation, speed);
     }
 }
-
-
-
 
 typingAnimation();

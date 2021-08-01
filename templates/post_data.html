@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block body %}
-<h1>This is your post</h1>
+<div class="container no_log">
+<h1>Let's check out how you're feeling</h1>
 
 <section id="display-post">
     <h3>Post Info</h3>
@@ -28,6 +29,7 @@
         </dd>
     </dl>
 </section>
+</div>
 
 <script> const postID = {{ post.post_id }}</script>
 <script src="/static/js/analyze_post.js"></script>

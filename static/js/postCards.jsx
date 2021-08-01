@@ -12,13 +12,16 @@ function PostDetail(props) {
           ) } 
         </div>
         <p></p>
+        <p><strong>Prompt:</strong> {props.postPrompt} </p>
         <p><strong>Post:</strong> {props.postText} </p>
       </div>
     );
   }
-  
+
 function PostDetailsContainer() {
     const [posts, setPosts] = React.useState([]);
+    const [filterStatus, setFilterStatus] = React.useState(null)
+
 
     React.useEffect(() => {
       const fetchPosts = () => {

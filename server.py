@@ -180,12 +180,20 @@ def all_tone_qualities():
 
     return render_template('all_tone_qualities.html', tone_qualities=tone_qualities)
 
+@app.route('/posts_filtered')
+def view_filtered_post():
+    """View filtered posts."""
+
+    user = crud.get_user_by_id(session['user_id'])
+    tone_quality = request.args.get('tone_filter_quality')
+
+    return render_template('user_details_filtered.html', user=user, tone_quality=tone_quality)
+
 # React routes
 
 @app.route("/posts.json")
-def get_posts_json():
+def get_all_posts_json():
     """Return a JSON response with all of a user's posts."""
-
 
     posts = [
         {
@@ -196,6 +204,24 @@ def get_posts_json():
             "toneQualities": crud.get_tone_qualities_by_post_id(post.post_id),
         }
         for post in crud.get_post_by_user_id(session['user_id'])
+    ]
+
+    return jsonify(posts)
+
+@app.route("/posts_filtered/<tone_filter>")
+def get_filtered_posts_json(tone_filter):
+    """Return a JSON response with a filtered selection of a user's posts."""
+
+    posts = [
+        {
+            "postId": post.post_id,
+            "postPrompt" : crud.get_prompt_by_prompt_id(post.prompt_id),
+            "postText": post.post_text,
+            "location": post.user_facing_location,
+            "dateCreated": post.created_at,
+            "toneQualities": crud.get_tone_qualities_by_post_id(post.post_id),
+        }
+        for post in crud.get_post_by_tone_quality(session['user_id'], tone_filter)
     ]
 
     return jsonify(posts)
