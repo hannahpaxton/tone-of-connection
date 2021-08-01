@@ -1,0 +1,46 @@
+{% extends 'base_log.html' %}
+
+{% block title %}{{ user.username }} - Details{% endblock %}
+{% block head %}
+
+{% endblock %}
+
+{% block js %}
+<script src="/static/js/postCardsFiltered.jsx" type="text/jsx"></script>
+{% endblock %}
+
+{% block body %}
+<div class="container no_log">
+    <h1>When {{ user.username }} Was Feeling {{ tone_quality }}</h1>
+
+    <form action="/posts_filtered"> 
+        <div class="tone_filters">
+            <input type="submit" id="Anger" value="Anger" onclick="getQuality(this)">
+            <input type="submit" id="Joy" value="Joy" onclick="getQuality(this)">
+            <input type="submit" id="Disgust" value="Disgust" onclick="getQuality(this)">
+            <input type="submit" id="Fear" value="Fear" onclick="getQuality(this)">
+            <input type="submit" id="Sadness" value="Sadness" onclick="getQuality(this)">
+            <input type="submit" id="Analytical" value="Analytical" onclick="getQuality(this)">
+            <input type="submit" id="Confident" value="Confident" onclick="getQuality(this)">
+            <input type="submit" id="Tentative" value="Tentative" onclick="getQuality(this)">
+        </div>
+
+    <div>
+        <input type="hidden" id="toneFilter" name="tone_filter_quality" value="" ref="filter">
+    </div>
+    </form>
+    <p><a href='/users/{{ user.user_id }}'>Back to All Posts</a></p>
+    
+    <div id="all-posts" class="grid"></div>
+</div>
+
+<script>
+    function getQuality(e) {
+        var quality = e.getAttribute("id");
+        document.getElementById("toneFilter").value = quality;
+        console.log(document.getElementById("toneFilter").value);
+    }
+
+</script>
+
+{% endblock %}
