@@ -12,7 +12,7 @@ function PostDetail(props) {
           ) } 
         </div>
         <p></p>
-        <p><strong>Prompt:</strong> {props.postPrompt} </p>
+        <p><strong>Question:</strong> {props.postPrompt} </p>
         <p><strong>Post:</strong> {props.postText} </p>
       </div>
     );

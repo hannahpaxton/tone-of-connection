@@ -175,7 +175,9 @@ def analyze_post(post):
 
             result = create_result(post.post_id, tone_name, user_facing_score, unique_hex_value)
             final_results.append(result)
+
     return final_results
+       
     
 if __name__ == '__main__':
     from server import app

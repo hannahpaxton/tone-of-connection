@@ -28,7 +28,14 @@ const toneAnalysis = `/api/tone/${postID}`;
 fetch(toneAnalysis)
 .then((response) => response.json())
 .then((toneData) => {
-    showToneData(toneData)
+    console.log(toneData.data)
+    if (toneData.data === undefined) {
+        const errorDiv = document.getElementById('post_tone');
+            const errorMessage = document.createTextNode("No tone detected!");
+            errorDiv.append(errorMessage);
+    } else {
+        showToneData(toneData);
+    }
 });
 
 
