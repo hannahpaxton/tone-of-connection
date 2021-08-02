@@ -1,12 +1,13 @@
 "use strict";
 
 var i = 0;
-var copy = "This is Tone of Connection - an anonymous journal that analyzes your mood and translates it to color";
+var defaultCopy = `${postPrompt}`;
 var speed = 50;
+console.log(`${postPrompt}`)
 
 function typingAnimation() {
-    if (i < copy.length) {
-        document.getElementById("typing").innerHTML += copy.charAt(i);
+    if (i < defaultCopy.length) {
+        document.getElementById("typing").innerHTML += defaultCopy.charAt(i);
         i++;
         setTimeout(typingAnimation, speed);
     }

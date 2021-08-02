@@ -7,10 +7,10 @@ import os
 import json
 from colour import Color
 
-def create_user(username, password, email):
+def create_user(username, email, password):
     """Create and return a new user."""
 
-    user = User(username=username, password=password, email=email)
+    user = User(username=username, email=email, password=password)
 
     db.session.add(user)
     db.session.commit()

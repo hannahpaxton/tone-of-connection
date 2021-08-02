@@ -10,7 +10,7 @@
   <div class="row">
 
     <div class="col-12 col-md-6 low_margin">
-      <h2 class="prompt">{{ random_prompt.prompt }}</h2>
+      <h2 class="prompt" id="typing"></h2>
     </div>
 
     <div class="col-12 col-md-6 low_margin">
@@ -34,5 +34,9 @@
     
   </div>
 </div>
+
+<script> var postPrompt =  "{{ random_prompt.prompt }}" </script>
+
+<script src="/static/js/welcome.js"></script>
 
 {% endblock %}

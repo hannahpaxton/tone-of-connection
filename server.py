@@ -38,14 +38,14 @@ def register_user():
     """Create a new user"""
 
     username = request.form.get('username')
-    password = request.form.get('password')
     email = request.form.get('email')
+    password = request.form.get('password')
 
     user = crud.get_user_by_email(email)
     if user:
         flash('Cannot create an account with that email. Try again.')
     else: 
-        crud.create_user(username, password, email)
+        crud.create_user(username, email, password)
         flash('Account created!') 
     return redirect('/login')
 
@@ -56,7 +56,7 @@ def login_user():
     email = request.form.get('email_login')
     password = request.form.get('password_login')
 
-    user = crud.get_user_by_password(email,password)
+    user = crud.get_user_by_password(email, password)
     if user:
         session['user_id'] = user.user_id
         flash('Logged in!')

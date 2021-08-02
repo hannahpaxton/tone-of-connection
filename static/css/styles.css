@@ -30,13 +30,21 @@ html * {
     }
 }
 
-body {
+body.no_log {
     margin: 0;
     padding: 0; 
     -webkit-animation: shiftingcolor 20s infinite;
     animation: shiftingcolor 10s infinite;
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
+}
+
+body.log {
+    background-color: lightblue;
+}
+
+.all_user_posts {
+    background: honeydew;
 }
 
 .flash-msg {
@@ -47,6 +55,11 @@ body {
     background: rgba(255,255,255,0.4);
     border-radius: 4%;
     border: .5px solid rgba(255,255,255,0.2);
+}
+
+.disclaimer {
+    font-size: x-small;
+    margin-top: -15px;
 }
 
 .button {

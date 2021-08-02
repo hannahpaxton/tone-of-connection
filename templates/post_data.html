@@ -7,28 +7,33 @@
 
 {% block body %}
 <div class="container no_log">
-<h1>Let's check out how you're feeling</h1>
+    <div class="row">
+        <h1>Let's Check Out How You're Feeling</h1>
 
-<section id="display-post">
-    <h3>Post Info</h3>
+        <section id="display-post">
+            <h3>Post Info</h3>
 
-    <dl>
-        <dt>Post</dt>
-        <dd id="post_text">{{ post.post_text }}</dd>
-       
-        <dt>Location</dt>
-        <dd id="post_location">{{ session['user_facing_location'] }}</dd>
+            <dl>
+                <dt>I Asked:</dt>
+                <dd id="post_prompt">{{ post.prompt.prompt }}</dd>
 
-        <dt>Date</dt>
-        <dd id="post_date">{{ user_facing_date }}</dd>
+                <dt>You Said:</dt>
+                <dd id="post_text">{{ post.post_text }}</dd>
+            
+                <dt>Location:</dt>
+                <dd id="post_location">{{ session['user_facing_location'] }}</dd>
 
-        <dt>Tone Result</dt>
-        <dd>
-            <div id="post_tone">
-            </div>
-        </dd>
-    </dl>
-</section>
+                <dt>Date:</dt>
+                <dd id="post_date">{{ user_facing_date }}</dd>
+
+                <dt>Tone Qualities:</dt>
+                <dd>
+                    <div id="post_tone">
+                    </div>
+                </dd>
+            </dl>
+        </section>
+    </div>
 </div>
 
 <script> const postID = {{ post.post_id }}</script>

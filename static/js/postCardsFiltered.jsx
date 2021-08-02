@@ -2,6 +2,8 @@
 function PostDetail(props) {
     return (
       <div className="post clearfix">
+        <p><strong>I Asked:</strong> {props.postPrompt} </p>
+        <p><strong>You Said:</strong> {props.postText} </p>
         <p><strong>Location:</strong> {props.location} </p>
         <p><strong>Date:</strong> {props.dateCreated} </p>
         <div><strong>Tone Qualities:</strong> {props.toneQualities.map(tone => 
@@ -13,8 +15,6 @@ function PostDetail(props) {
           ) } 
         </div>
         <p></p>
-        <p><strong>I Asked:</strong> {props.postPrompt} </p>
-        <p><strong>You Said:</strong> {props.postText} </p>
       </div>
     );
   }

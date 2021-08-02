@@ -14,14 +14,15 @@
         <form id="account_creation" action="/register" method="POST">
           <p>
           Username <input class="transparency_field" type="text" name="username">
+            <p class="disclaimer">(Don't worry - this will only be visible to you!)</p>
+          </p>
+
+          <p>
+            Email <input class="transparency_field" type="text" name="email">
           </p>
 
           <p>
           Password <input class="transparency_field" type="password" name="password">
-          </p>
-
-          <p>
-          Email <input class="transparency_field" type="text" name="email">
           </p>
 
           <p>
@@ -33,5 +34,6 @@
   </div>
 </div>
 
+<script> var postPrompt = "This is Tone of Connection - an anonymous journal that analyzes your mood and translates it to color" </script>
 <script src="/static/js/welcome.js"></script>
 {% endblock %}
