@@ -3,7 +3,6 @@
 var i = 0;
 var defaultCopy = `${postPrompt}`;
 var speed = 50;
-console.log(`${postPrompt}`)
 
 function typingAnimation() {
     if (i < defaultCopy.length) {

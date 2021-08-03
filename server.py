@@ -25,7 +25,10 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """View homepage."""
 
-    return render_template('homepage.html')
+    if 'user_id' in session:
+        return redirect(f"/users/{session['user_id']}")
+    else:
+        return render_template('homepage.html')
 
 @app.route('/login')
 def login():
@@ -44,10 +47,11 @@ def register_user():
     user = crud.get_user_by_email(email)
     if user:
         flash('Cannot create an account with that email. Try again.')
+        return redirect('/')
     else: 
         crud.create_user(username, email, password)
         flash('Account created!') 
-    return redirect('/login')
+        return redirect('/login')
 
 @app.route('/create-session', methods=['POST'])
 def login_user():
@@ -60,16 +64,17 @@ def login_user():
     if user:
         session['user_id'] = user.user_id
         flash('Logged in!')
+        return redirect(f"/users/{session['user_id']}")
     else: 
         flash('Password does not match. Try again.')
-    return redirect(f"/users/{session['user_id']}")
+        return redirect('/login')
 
 @app.route('/logout')
 def logout(): 
     if session.get('user_id'):
         del session['user_id']
     flash('You are now logged out.')
-    return redirect('/')
+    return redirect('/login')
 
 # User routes
 @app.route('/users')
