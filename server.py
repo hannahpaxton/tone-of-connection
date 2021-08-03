@@ -32,7 +32,7 @@ def homepage():
 
 @app.route('/login')
 def login():
-    """View login page."""
+    """View login page"""
 
     return render_template('login.html')
 
@@ -71,10 +71,18 @@ def login_user():
 
 @app.route('/logout')
 def logout(): 
+    """Logout an existing user"""
+
     if session.get('user_id'):
         del session['user_id']
     flash('You are now logged out.')
     return redirect('/login')
+
+@app.route('/about')
+def about():
+    """View the about page"""
+
+    return render_template('about.html')
 
 # User routes
 @app.route('/users')
