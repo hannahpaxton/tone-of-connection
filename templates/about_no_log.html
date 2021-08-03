@@ -1,11 +1,30 @@
-{% extends 'base_log.html' %}
+{% extends 'base_no_log.html' %}
 {% block title %}About Tone of Connection{% endblock %}
 
 {% block body %}
-
+<div class="jumbotron vertical-center">
 <div class="container no_log">
+    <h1>How It Works</h1>
+    <p>I'll give you a prompt and you provide me with your thoughts. I'll analyze your post for tone qualities and tell you what I detected. 
+        The stronger a detected tone is, the more saturated the corresponding color will be. If the tone is weakly detected, I'll lower the saturation.</p> 
+        <div class="row" id="about_example">
+            <div class="col-12 col-md-6 extra_low_margin">
+                <p><strong>Strong Tone Detection</strong></p>
+                <div style="height:20px; width:20px; background-color:#1a1aff; border-radius:100%; float:left"></div> 
+                <p style="display: inline-block; padding-left: 20px;"> Sadness 97% </p>
+            </div>
+            <div class="col-12 col-md-6 extra_low_margin">
+                <p><strong>Weak Tone Detection</strong></p>
+                <div style="height:20px; width:20px; background-color:#a3a3ff; border-radius:100%; float:left"></div> 
+                <p style="display: inline-block; padding-left: 20px;"> Sadness 58% </p>
+            </div>
+        </div>
+        <p id="div_margin">With your given zip code, I'll post your thoughts to the Mood Map with a colored marker corresponding to your most resonant tone. 
+        Beyond your zip code, the Mood Map is completely anonymized and no personal information will be attached to your marker.</p>
+    </p>
+
     <div class="row">
-        <h1>Meet Your Mood</h1>
+        <h2>Meet Your Mood</h2>
   
         <div class="col-12 col-md-6 low_margin">
             <div>
@@ -54,7 +73,7 @@
                 <div class="tone_base" style="background-color:#ff00ff"></div>
                 <h3 class="tone_name">Fear</h3>
                 <p class="tone_descrip">
-                    An unpleasant emotion caused by the belief that someone or something is dangerous, likely to cause pain, or a threat
+                    An emotion caused by the belief that someone or something is dangerous, likely to cause pain, or a threat
                 </p>
             </div>
 
@@ -75,6 +94,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}

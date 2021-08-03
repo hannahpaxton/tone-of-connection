@@ -140,8 +140,16 @@ textarea {
     width: 100%;
 }
 
+#div_margin {
+    margin-top: 1.5%;
+}
+
 .low_margin {
-    padding: 30px;;
+    padding: 30px;
+}
+
+.extra_low_margin {
+    padding: 10px 30px 10px 30px;
 }
 
 .no_post {

@@ -78,11 +78,17 @@ def logout():
     flash('You are now logged out.')
     return redirect('/login')
 
-@app.route('/about')
-def about():
-    """View the about page"""
+@app.route('/about1')
+def about1():
+    """View the about page when not logged in"""
 
-    return render_template('about.html')
+    return render_template('about_no_log.html')
+
+@app.route('/about2')
+def about2():
+    """View the about page when logged in"""
+
+    return render_template('about_log.html')
 
 # User routes
 @app.route('/users')
