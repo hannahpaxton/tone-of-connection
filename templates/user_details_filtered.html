@@ -28,25 +28,25 @@
             <input type="hidden" id="toneFilter" name="tone_filter_quality" value="" ref="filter">
         </div>
     </form>
-    <p class="right_align"><a href='/users/{{ user.user_id }}'>Back to All Posts</a></p>
 
-    <h1>When {{ user.username }} Was Feeling {{ tone_quality }}</h1>
+    <h1 id="top_margin">When {{ user.username }} Was Feeling {{ tone_quality }}</h1>
     
     <div id="all-posts" class="grid"></div>
 </div>
 
 <script>
+    function getSelected() {
+        var selectedTone = {{ tone_quality }}.id;
+        var selectedFilter = document.getElementById(selectedTone);
+        selectedFilter.classList.add("selected");
+    }
+
     function getQuality(e) {
         var quality = e.getAttribute("id");
         document.getElementById("toneFilter").value = quality;
     }
 
-    $("input").click(function(e) {
-        $("input").removeClass("selected");
-        $(this).addClass("selected");
-    });
-
-
+    getSelected()
 </script>
 
 {% endblock %}

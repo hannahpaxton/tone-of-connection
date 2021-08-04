@@ -51,8 +51,8 @@ body.log {
     text-align: center;
 }
 
-.right_align {
-    text-align: right;
+#top_margin {
+    margin-top: 2%;
 }
 
 .transparency_field {
@@ -180,19 +180,19 @@ textarea {
 
   /* Tone Filter Button Styling */
 
-  .tone_filters {
+.tone_filters {
     text-align: right;
     margin: 0;
     padding: 0;
     position: relative;
-  }
+}
 
-  .tone_filters:before {
+.tone_filters:before {
     z-index: 1;
     border: 1px solid #AAA;
-  }
+}
 
-  .tone_filters:after {
+.tone_filters:after {
     position: absolute;
     content: "";
     width: 100%;
@@ -200,9 +200,9 @@ textarea {
     left: 0;
     border-bottom: 1px solid #AAA;
     z-index: 1;
-  }
+}
 
-  .tone_filters input {
+.tone_filters input {
     margin: 0 -5px;
     padding: 0 20px;
     border: 1px solid #AAA;
@@ -213,39 +213,40 @@ textarea {
     border-top-right-radius: 6px;
     /* background: linear-gradient(to bottom, #ECECEC 50%, #D1D1D1 100%); */
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #f2f2f2;
-    /* text-shadow: 0 1px #000; */
+    text-shadow: 0 1px #fff;
     color: rgb(40, 38, 38);
-  }
+}
 
-  .tone_filters input:before,
-  .tone_filters input:after {
+.tone_filters input:before,
+.tone_filters input:after {
     position: absolute;
     bottom: -1px;
     width: 6px;
     height: 6px;
     content: " ";
-  }
+}
 
-  .tone_filters input:before {
+.tone_filters input:before {
     left: -6px;
     border-bottom-right-radius: 6px;
     border-width: 0 1px 1px 0;
     /* box-shadow: 2px 2px 0 #ECECEC; */
-  }
+}
 
-  .tone_filters input:after {
+.tone_filters input:after {
     right: -6px;
     border-bottom-left-radius: 6px;
     border-width: 0 0 1px 1px;
     /* box-shadow: -2px 2px 0 #ECECEC; */
-  }
+}
 
-  .tone_filters input.selected {
-    background: #FFF;
+.tone_filters input.selected {
     color: white;
+    text-shadow: none;
+    font-weight: bold;
     z-index: 2;
     /* border-bottom-color: yellow; */
-  }
+}
 
   /* .tone_filters input.selected:before {
     box-shadow: 2px 2px 0 #FFF;
@@ -255,36 +256,68 @@ textarea {
     box-shadow: -2px 2px 0 #FFF;
   } */
 
-  #Anger {
-      background: #ff6666;
-  }
+#Anger {
+      background: #ffb3b3;
+}
 
-  #Disgust {
-    background: #ffad66;
-  }
+#Anger.selected {
+    background: #ff0000;
+}
 
-  #Joy {
-    background: #ffeb66;
-  }
+#Disgust {
+    background: #ffd6b3;
+}
 
-  #Confident {
-    background: #66ff66;
-  }
+#Disgust.selected {
+    background: #ff7700;
+}
 
-  #Tentative {
-    background: #66ffff;
-  }
+#Joy {
+    background: #fff5b3;
+}
 
-  #Sadness {
-    background: #6666ff;
-  }
+#Joy.selected {
+    background: #ffdd00;
+}
 
-  #Analytical {
-    background: #b366ff;
-  }
+#Confident {
+    background: #b3ffb3;
+}
 
-  #Fear {
-    background: #ff66ff;
-  }
+#Confident.selected {
+    background: #00ff00;
+}
+
+#Tentative {
+    background: #b3ffff;
+}
+
+#Tentative.selected {
+    background: #00ffff;
+}
+
+#Sadness {
+    background: #b3b3ff;
+}
+
+#Sadness.selected {
+    background: #0000ff;
+}
+
+#Analytical {
+    background: #d9b3ff;
+}
+
+#Analytical.selected {
+    background: #6600cc;
+}
+
+#Fear {
+    background: #ffb3ff;
+}
+
+#Fear.selected {
+    background: #ff00ff;
+}
 
 
