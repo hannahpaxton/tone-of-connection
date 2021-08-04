@@ -11,25 +11,26 @@
 
 {% block body %}
 <div class="container no_log">
-    <h1>When {{ user.username }} Was Feeling {{ tone_quality }}</h1>
 
     <form action="/posts_filtered"> 
         <div class="tone_filters">
-            <input type="submit" id="Anger" value="Anger" onclick="getQuality(this)">
-            <input type="submit" id="Joy" value="Joy" onclick="getQuality(this)">
-            <input type="submit" id="Disgust" value="Disgust" onclick="getQuality(this)">
-            <input type="submit" id="Fear" value="Fear" onclick="getQuality(this)">
-            <input type="submit" id="Sadness" value="Sadness" onclick="getQuality(this)">
-            <input type="submit" id="Analytical" value="Analytical" onclick="getQuality(this)">
-            <input type="submit" id="Confident" value="Confident" onclick="getQuality(this)">
-            <input type="submit" id="Tentative" value="Tentative" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Anger" value="Anger" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Disgust" value="Disgust" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Joy" value="Joy" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Confident" value="Confident" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Tentative" value="Tentative" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Sadness" value="Sadness" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Analytical" value="Analytical" onclick="getQuality(this)">
+            <input type="submit" class="default" id="Fear" value="Fear" onclick="getQuality(this)">
         </div>
 
-    <div>
-        <input type="hidden" id="toneFilter" name="tone_filter_quality" value="" ref="filter">
-    </div>
+        <div>
+            <input type="hidden" id="toneFilter" name="tone_filter_quality" value="" ref="filter">
+        </div>
     </form>
-    <p><a href='/users/{{ user.user_id }}'>Back to All Posts</a></p>
+    <p class="right_align"><a href='/users/{{ user.user_id }}'>Back to All Posts</a></p>
+
+    <h1>When {{ user.username }} Was Feeling {{ tone_quality }}</h1>
     
     <div id="all-posts" class="grid"></div>
 </div>
@@ -39,6 +40,12 @@
         var quality = e.getAttribute("id");
         document.getElementById("toneFilter").value = quality;
     }
+
+    $("input").click(function(e) {
+        $("input").removeClass("selected");
+        $(this).addClass("selected");
+    });
+
 
 </script>
 

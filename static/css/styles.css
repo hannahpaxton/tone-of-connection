@@ -51,6 +51,10 @@ body.log {
     text-align: center;
 }
 
+.right_align {
+    text-align: right;
+}
+
 .transparency_field {
     background: rgba(255,255,255,0.4);
     border-radius: 4%;
@@ -161,6 +165,7 @@ textarea {
     grid-template-columns: 6fr 6fr;
     grid-gap: 40px;
     align-items: baseline;
+    margin-top: 4%;
   }
 
   div.post {
@@ -172,4 +177,114 @@ textarea {
     content: "";
     clear: both;
   }
+
+  /* Tone Filter Button Styling */
+
+  .tone_filters {
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .tone_filters:before {
+    z-index: 1;
+    border: 1px solid #AAA;
+  }
+
+  .tone_filters:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #AAA;
+    z-index: 1;
+  }
+
+  .tone_filters input {
+    margin: 0 -5px;
+    padding: 0 20px;
+    border: 1px solid #AAA;
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    /* background: linear-gradient(to bottom, #ECECEC 50%, #D1D1D1 100%); */
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 #f2f2f2;
+    /* text-shadow: 0 1px #000; */
+    color: rgb(40, 38, 38);
+  }
+
+  .tone_filters input:before,
+  .tone_filters input:after {
+    position: absolute;
+    bottom: -1px;
+    width: 6px;
+    height: 6px;
+    content: " ";
+  }
+
+  .tone_filters input:before {
+    left: -6px;
+    border-bottom-right-radius: 6px;
+    border-width: 0 1px 1px 0;
+    /* box-shadow: 2px 2px 0 #ECECEC; */
+  }
+
+  .tone_filters input:after {
+    right: -6px;
+    border-bottom-left-radius: 6px;
+    border-width: 0 0 1px 1px;
+    /* box-shadow: -2px 2px 0 #ECECEC; */
+  }
+
+  .tone_filters input.selected {
+    background: #FFF;
+    color: white;
+    z-index: 2;
+    /* border-bottom-color: yellow; */
+  }
+
+  /* .tone_filters input.selected:before {
+    box-shadow: 2px 2px 0 #FFF;
+  }
+
+  .tone_filters input.selected:after {
+    box-shadow: -2px 2px 0 #FFF;
+  } */
+
+  #Anger {
+      background: #ff6666;
+  }
+
+  #Disgust {
+    background: #ffad66;
+  }
+
+  #Joy {
+    background: #ffeb66;
+  }
+
+  #Confident {
+    background: #66ff66;
+  }
+
+  #Tentative {
+    background: #66ffff;
+  }
+
+  #Sadness {
+    background: #6666ff;
+  }
+
+  #Analytical {
+    background: #b366ff;
+  }
+
+  #Fear {
+    background: #ff66ff;
+  }
+
 
