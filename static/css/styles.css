@@ -178,6 +178,7 @@ textarea {
     border-radius: 15px;
     padding: 1em; 
     height: 30em;
+    width: 40em;
     display: table;
     content: "";
     clear: both;
@@ -470,3 +471,55 @@ textarea {
     background-color: #d1cfc7;
     border-radius: 15px;
 }
+
+  /* Map Styling */
+
+  #map { 
+    width: auto;
+    height: 100vh;
+    position: relative;
+}
+
+
+#tone_key {
+    height: 200px;
+    width: 300px;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+}
+
+.tone_base_map {
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    float: left;
+    margin: 2%;
+}
+
+.tone_name_map {
+    padding-left: 8px;
+    display: inline-block;
+}
+
+.no_margin {
+    padding: 0;
+    margin-left: 0;
+}
+
+#no_background {
+    background: rgba(255,255,255,0.6);
+    border: .5px solid rgba(255,255,255,0.2);
+    border-radius: 5px;
+    padding-left: 28px;
+    padding-top: 5px;
+}
+
+#close {
+    left: 0;
+    padding:2px 5px; 
+    background: rgba(255,255,255,0.6);
+    border-radius: 5px;
+    position: absolute;
+}
+

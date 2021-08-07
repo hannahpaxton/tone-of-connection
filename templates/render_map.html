@@ -11,9 +11,70 @@
 
 <div id="map"></div>
 <div id="tone_key">
-    <h3>Hello</h3>
-    <h3>Display?</h3>
+    <span id='close' onclick='toggleKey()'>x</span>
+    <div class="container" id="to_hide">
+    <div class="row" id="no_background">
+    <div class="col-12 no_margin">
+    <p><strong>Predominant Post Tone</strong></p>
+    </div>
+    <div class="col-12 col-md-6 no_margin">
+    <div>
+        <div class="tone_base_map" style="background-color:#ff0000"></div>
+        <p class="tone_name_map">Anger</p>
+    </div>
+
+    <div>
+        <div class="tone_base_map" style="background-color:#ffdd00"></div>
+        <p class="tone_name_map">Joy</p>
+    </div>
+
+    <div>
+        <div class="tone_base_map" style="background-color:#ff7700"></div>
+        <p class="tone_name_map">Disgust</p>
+    </div>
+
+    <div>
+        <div class="tone_base_map" style="background-color:#6600cc"></div>
+        <p class="tone_name_map">Analytical</p>
+    </div>
+    </div>
+
+    <div class="col-12 col-md-6 no_margin">
+    <div>
+        <div class="tone_base_map" style="background-color:#0000ff"></div>
+        <p class="tone_name_map">Sadness</p>
+    </div>
+
+    <div>
+        <div class="tone_base_map" style="background-color:#ff00ff"></div>
+        <p class="tone_name_map">Fear</p>
+    </div>
+
+    <div>
+        <div class="tone_base_map" style="background-color:#00ff00"></div>
+        <p class="tone_name_map">Confident</p>
+    </div>
+
+    <div>
+        <div class="tone_base_map" style="background-color:#00ffff"></div>
+        <p class="tone_name_map">Tentative</p>
+    </div>
+    </div>
+    </div>
+    </div>
 </div>
+<script>
+    function toggleKey() {
+  var x = document.getElementById("to_hide");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    document.getElementById("close").innerHTML = "x"
+  } else {
+    x.style.display = "none";
+    document.getElementById("close").innerHTML = ">"
+  }
+}
+</script>
 <script src="/static/js/map.js"></script>
 
 {% endblock %}

@@ -13,7 +13,6 @@ map.addControl(new mapboxgl.NavigationControl());
 map.doubleClickZoom.disable();
 
 
-
 $.get('/api/posts', (posts) => {
     for (const post of posts) {
         var postMarker = new mapboxgl.Marker({
