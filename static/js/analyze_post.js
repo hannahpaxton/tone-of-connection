@@ -23,6 +23,11 @@ function showToneData (toneData) {
     }    
 }
 
+function hideLoadingAnimation() {
+    var x = document.getElementById("loading");
+    x.style.display = "none";
+}
+
 const toneAnalysis = `/api/tone/${postID}`; 
 
 fetch(toneAnalysis)
@@ -30,10 +35,12 @@ fetch(toneAnalysis)
 .then((toneData) => {
     console.log(toneData)
     if (toneData.length === 0) {
+        hideLoadingAnimation()
         const errorDiv = document.getElementById('post_tone');
         const errorMessage = document.createTextNode("No tone detected!");
         errorDiv.append(errorMessage);
     } else {
+        hideLoadingAnimation()
         showToneData(toneData);
     }
 });

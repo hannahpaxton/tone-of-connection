@@ -3,7 +3,10 @@
 
 {% block body %}
 
-<div class="container no_log">
+<div class="jumbotron vertical-center">
+<div class="container" id="with_background">
+<div class="row">
+    <div class="col-12 col-md-6 low_margin">
     <h1>How Tone of Connection Works</h1>
     <p>I'll give you a prompt and you provide me with your thoughts. I'll analyze your post for tone qualities and tell you what I detected. 
         The stronger a detected tone is, the more saturated the corresponding color will be. If the tone is weakly detected, I'll lower the saturation.</p> 
@@ -22,9 +25,15 @@
         <p id="div_margin">With your given zip code, I'll post your thoughts to the Mood Map with a colored marker corresponding to your most resonant tone. 
         Beyond your zip code, the Mood Map is completely anonymized and no personal information will be attached to your marker.</p>
     </p>
+    </div>
+
+    <div class="col-12 col-md-6 low_margin">
+        <img id="mood_map" src="/static/images/placeholder_map.png" alt="Mood Map">
+    </div>
+</div>
 
     <div class="row">
-        <h2>Meet Your Mood</h2>
+        <h2 id="tone_about">Meet Your Mood</h2>
   
         <div class="col-12 col-md-6 low_margin">
             <div>
@@ -94,6 +103,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
