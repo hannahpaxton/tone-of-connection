@@ -6,11 +6,12 @@
 {% endblock %}
 
 {% block body %}
+<div class="jumbotron vertical-center">
 <div class="container no_log">
-    <div class="row">
-        <h1>Let's Check Out How You're Feeling</h1>
-
-        <section id="display-post">
+    <div class="row" id="post_analysis">
+        <h2>Let's Check Out How You're Feeling</h2>
+        <div class="col-12 col-md-6 no_margin">
+        <section id="display_post">
             <h3>Post Info</h3>
 
             <dl>
@@ -27,7 +28,7 @@
                 <dd id="post_date">{{ user_facing_date }}</dd>
 
                 <dt>Tone Qualities:</dt>
-                <dd>
+                <dd id="post_qualities">
                     <div id="loading" class="loading_container">
                         <div class="ball"></div>
                         <div class="ball"></div>
@@ -43,7 +44,11 @@
                 </dd>
             </dl>
         </section>
+        </div>
+        <div class="col-12 col-md-6 extra_low_margin">
+        </div>
     </div>
+</div>
 </div>
 
 <script> const postID = {{ post.post_id }}</script>

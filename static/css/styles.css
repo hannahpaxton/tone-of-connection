@@ -44,7 +44,7 @@ body.no_log {
 }
 
 body.log {
-    background-color: lightblue;
+    background-color: #E0E0D5;
 }
 
 .all_user_posts {
@@ -129,7 +129,7 @@ a:hover {
 
 .no_log {
     margin-top: 2%;
-    max-height: 600px;
+    min-height: 600px;
 }
   
 .row {
@@ -334,6 +334,7 @@ textarea {
     margin-left: 10px;
     transform: rotate(90deg);
     -webkit-property: rotate(90deg);
+    height: 100px;
   }
   
   .ball {
@@ -485,8 +486,8 @@ textarea {
     height: 200px;
     width: 300px;
     position: absolute;
-    top: 10%;
-    left: 5%;
+    top: 6%;
+    left: .5%;
 }
 
 .tone_base_map {
@@ -508,7 +509,7 @@ textarea {
 }
 
 #no_background {
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.75);
     border: .5px solid rgba(255,255,255,0.2);
     border-radius: 5px;
     padding-left: 28px;
@@ -523,3 +524,25 @@ textarea {
     position: absolute;
 }
 
+  /* Post Details Styling */
+
+  #post_analysis {
+      padding-top:40px;
+      padding-left: 1em;
+      min-height: 640px;
+  }
+
+  #post_qualities {
+      min-height: 100px;
+  }
+
+  #display_post {
+    /* background: rgba(255,255,255,0.4);
+    border-radius: 2px;
+    border: .5px solid rgba(255,255,255,0.2); */
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    padding: 1em; 
+    height: 30em;
+    width: 35em;
+  }

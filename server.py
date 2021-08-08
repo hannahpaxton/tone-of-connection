@@ -28,7 +28,13 @@ def homepage():
     if 'user_id' in session:
         return redirect(f"/users/{session['user_id']}")
     else:
-        return render_template('homepage.html')
+        return render_template('home.html')
+
+@app.route('/account')
+def create_account():
+    """View account creation page."""
+
+    return render_template('account.html')
 
 @app.route('/login')
 def login():
