@@ -3,49 +3,73 @@ html * {
     color: rgb(40, 38, 38);
 }
 
-@keyframes shiftingcolor {
-    0% {
-        background-color: #a64dff
-    }
-    15% {
-        background-color: #4d4dff
-    }
-    30% {
-        background-color: #4dffff
-    }
-    45% {
-        background-color: #4dff4d
-    }
-    60% {
-        background-color: #ffe74d
-    }
-    75% {
-        background-color: #ffa04d
-    }
-    90% {
-        background-color: #ff4d4d
-    }
-    100% {
-        background-color: #ff4dff
-    }
-}
-
 body.no_log {
     margin: 0;
-    padding: 0; 
-    -webkit-animation: shiftingcolor 20s infinite;
-    animation: shiftingcolor 10s infinite;
-    -webkit-animation-direction: alternate;
-    animation-direction: alternate;
 }
 
-.tone_key {
-    background-color: white;
+.container {
+    padding:10px;
 }
 
 body.log {
     background-color: #E0E0D5;
 }
+
+
+/* Home Styling */
+
+.container-fluid {
+    margin: 0;
+}
+
+body.no_log {
+    background: linear-gradient(-45deg, #a64dff, #4d4dff, #4dffff,#4dff4d, #ffe74d, #ffa04d, #ff4d4d, #ff4dff);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#background_map {
+    background-image: url(/static/images/placeholder_map.png);
+    width: auto;
+    height: 100vh;
+}
+
+#home_main {
+    height: 550px;
+}
+
+#create_account {
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+}
+
+#features {
+    background-color: white;
+    height: 300px;
+}
+
+.tone_card {
+    background-color: white;
+    padding: 30px;
+}
+
+
+
+
+/* Ucategorized Styling */
 
 .all_user_posts {
     background: honeydew;
@@ -132,11 +156,6 @@ a:hover {
     min-height: 600px;
 }
   
-.row {
-    background-color: #d1cfc7;
-    border-radius: 15px;
-}
-
 .col-md-6 {
     padding: 140px 60px;
 }
@@ -468,7 +487,7 @@ textarea {
     border-radius: 15px;
 }
 
-#with_background {
+.with_background {
     background-color: #d1cfc7;
     border-radius: 15px;
 }
@@ -522,6 +541,7 @@ textarea {
     background: rgba(255,255,255,0.6);
     border-radius: 5px;
     position: absolute;
+    top: 6%;
 }
 
   /* Post Details Styling */

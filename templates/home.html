@@ -3,115 +3,150 @@
 
 {% block body %}
 <div class="jumbotron vertical-center">
-    <div class="container" id="with_background">
-    <div class="row">
-        <div class="col-12 extra_low_margin">
+    <div class="container-fluid">
+    <div class="row" id="home_main">
+        <div>
             <h1>Tone of Connection</h1>
             <p>Some intro text</p> 
-            <button a href="/login">Create an Account</button>
-            <button a href="/login">Sign In</button>
         </div>
+
+        <div class="col-6 col-md-4 with_background" id="create_account">
+
+            <h2>Create an Account</h2>
+            <form id="account_creation" action="/register" method="POST">
+              <p>
+              Username <input class="transparency_field" type="text" name="username">
+                <p class="disclaimer">(Don't worry - this will only be visible to you!)</p>
+              </p>
+    
+              <p>
+                Email <input class="transparency_field" type="text" name="email">
+              </p>
+    
+              <p>
+              Password <input class="transparency_field" type="password" name="password">
+              </p>
+                
+              <p>
+                <input class="button" type="submit">
+              </p>
+    
+              <p class="disclaimer">Already have an account? <a href='/login'>Sign in</a></p>
+            </form>
+          </div>
     </div>
 
-    <div class="row" style="background-color: white;">
-        <div class="col-12 col-md-6 low_margin">
-            <h1>How Tone of Connection Works</h1>
-            <p>I'll give you a prompt and you provide me with your thoughts. I'll analyze your post for tone qualities and tell you what I detected. 
-                The stronger a detected tone is, the more saturated the corresponding color will be. If the tone is weakly detected, I'll lower the saturation.</p> 
-                <div class="row" id="about_example">
-                    <div class="col-12 col-md-6 extra_low_margin">
-                        <p><strong>Strong Tone Detection</strong></p>
-                        <div style="height:20px; width:20px; background-color:#1a1aff; border-radius:100%; float:left"></div> 
-                        <p style="display: inline-block; padding-left: 20px;"> Sadness 97% </p>
-                    </div>
-                    <div class="col-12 col-md-6 extra_low_margin">
-                        <p><strong>Weak Tone Detection</strong></p>
-                        <div style="height:20px; width:20px; background-color:#a3a3ff; border-radius:100%; float:left"></div> 
-                        <p style="display: inline-block; padding-left: 20px;"> Sadness 58% </p>
-                    </div>
-                </div>
-                <p id="div_margin">With your given zip code, I'll post your thoughts to the Mood Map with a colored marker corresponding to your most resonant tone. 
-                Beyond your zip code, the Mood Map is completely anonymized and no personal information will be attached to your marker.</p>
+    <div class="row" id="features">
+        <div class="col-12 col-md-3 low_margin">
+            <h3 class="tone_name">Anger</h3>
+            <p class="tone_descrip">
+                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
             </p>
-            </div>
-    
-        <div class="col-12 col-md-6 low_margin">
-            <img id="mood_map" src="/static/images/placeholder_map.png" alt="Mood Map">
         </div>
-    </div>
-    
+        <div class="col-12 col-md-3 low_margin">
+            <h3 class="tone_name">Anger</h3>
+            <p class="tone_descrip">
+                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+            </p>
+        </div>
+        <div class="col-12 col-md-3 low_margin">
+            <h3 class="tone_name">Anger</h3>
+            <p class="tone_descrip">
+                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+            </p>
+        </div>
+        <div class="col-12 col-md-3 low_margin">
+            <h3 class="tone_name">Anger</h3>
+            <p class="tone_descrip">
+                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+            </p>
+        </div>     
+    </div> 
+
+    <div class="row" id="background_map">
+        <h2 id="tone_about">Meet Your Mood</h2>
+        <div id="mood_grid">
         <div class="row">
-            <h2 id="tone_about">Meet Your Mood</h2>
-      
-            <div class="col-12 col-md-6 low_margin">
-                <div>
-                    <div class="tone_base" style="background-color:#ff0000"></div>
-                    <h3 class="tone_name">Anger</h3>
-                    <p class="tone_descrip">
-                        An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
-                    </p>
+            <div class="col-12 col-md-3 tone_card">
+                <div class="tone_base">
+                    <img src="/static/images/anger.png" alt="Anger" style="width:30px">
                 </div>
-    
-                <div>
-                    <div class="tone_base" style="background-color:#ffdd00"></div>
-                    <h3 class="tone_name">Joy</h3>
-                    <p class="tone_descrip">
-                        A feeling of extreme gladness, delight, or exultation of the spirit arising from a sense of well-being or satisfaction
-                    </p>
+                <h3 class="tone_name">Anger</h3>
+                <p class="tone_descrip">
+                    An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+                </p>
+            </div>
+            <div class="col-12 col-md-3 tone_card">
+                <div class="tone_base">
+                    <img src="/static/images/joy.png" alt="Joy" style="width:30px">
                 </div>
-    
+                <h3 class="tone_name">Joy</h3>
+                <p class="tone_descrip">
+                    A feeling of extreme gladness, delight, or exultation of the spirit arising from a sense of well-being or satisfaction
+                </p>
+            </div>
+            <div class="col-12 col-md-3 tone_card">
                 <div>
-                    <div class="tone_base" style="background-color:#ff7700"></div>
+                    <div class="tone_base">
+                        <img src="/static/images/disgust.png" alt="Disgust" style="width:30px">
+                    </div>
                     <h3 class="tone_name">Disgust</h3>
                     <p class="tone_descrip">
                         A feeling of revulsion or strong disapproval aroused by something unpleasant or offensive
                     </p>
                 </div>
-    
-                <div>
-                    <div class="tone_base" style="background-color:#6600cc"></div>
-                    <h3 class="tone_name">Analytical</h3>
-                    <p class="tone_descrip">
-                        Relating to or using analysis or logical reasoning
-                    </p>
-                </div>
             </div>
-    
-            <div class="col-12 col-md-6 low_margin">
-                <div>
-                    <div class="tone_base" style="background-color:#0000ff"></div>
+            <div class="col-12 col-md-3 tone_card">
+                <div class="tone_base">
+                    <img src="/static/images/analytical.png" alt="Analytical" style="width:30px">
+                </div>
+                <h3 class="tone_name">Analytical</h3>
+                <p class="tone_descrip">
+                    Relating to or using analysis or logical reasoning
+                </p>
+            </div>  
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-3 tone_card">
+                    <div class="tone_base">
+                        <img src="/static/images/sadness.png" alt="Sadness" style="width:30px">
+                    </div>
                     <h3 class="tone_name">Sadness</h3>
                     <p class="tone_descrip">
                         An emotional pain associated with feelings of disadvantage, loss, despair, grief, helplessness, disappointment and sorrow
-                    </p>
-                </div>
-    
-                <div>
-                    <div class="tone_base" style="background-color:#ff00ff"></div>
+            </div>
+            <div class="col-12 col-md-3 tone_card">
+                    <div class="tone_base">
+                        <img src="/static/images/fear.png" alt="Fear" style="width:30px">
+                    </div>
                     <h3 class="tone_name">Fear</h3>
                     <p class="tone_descrip">
                         An unpleasant emotion caused by the belief that someone or something is dangerous, likely to cause pain, or a threat
                     </p>
-                </div>
-    
-                <div>
-                    <div class="tone_base" style="background-color:#00ff00"></div>
+            </div>
+            <div class="col-12 col-md-3 tone_card">
+                    <div class="tone_base">
+                        <img src="/static/images/confidence.png" alt="Confident" style="width:30px">
+                    </div>
                     <h3 class="tone_name">Confident</h3>
                     <p class="tone_descrip">
                         A feeling of self-assurance arising from one's appreciation of one's own abilities or qualities
                     </p>
-                </div>
-    
-                <div>
-                    <div class="tone_base" style="background-color:#00ffff"></div>
+            </div>
+            <div class="col-12 col-md-3 low_margin tone_card">
+                    <div class="tone_base">
+                        <img src="/static/images/tentative.png" alt="Tentative" style="width:30px">
+                    </div>
                     <h3 class="tone_name">Tentative</h3>
                     <p class="tone_descrip">
                         Indicating a lack of confidence or certainty
                     </p>
-                </div>
-            </div>
+            </div>  
+        </div>
         </div>
     </div>
     </div>
+</div>
 
+    
 {% endblock %}
