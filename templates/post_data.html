@@ -8,9 +8,9 @@
 {% block body %}
 <div class="jumbotron vertical-center">
 <div class="container no_log">
-    <div class="row" id="post_analysis">
-        <h2>Let's Check Out How You're Feeling</h2>
-        <div class="col-12 col-md-6 no_margin">
+    <div class="row with_background" id="post_analysis">
+        <h1 style="font-size: 45px;">Let's Check Out How You're Feeling</h1>
+        <div class="col-12 col-md-8 no_margin">
         <section id="display_post">
             <h3>Post Info</h3>
 
@@ -45,9 +45,26 @@
             </dl>
         </section>
         </div>
-        <div class="col-12 col-md-6 extra_low_margin">
+        
+        <div class="col-12 col-md-4 no_margin">
+            <div class="row" id="map_CTA">
+                <a href="/map" class="div_anchors">
+                    <div class="col-12 no_margin">
+                        <p class="CTA_text">See your post on the Mood Map</p>
+                    </div>
+                </a>
+            </div>
+            <div class="row" id="journal_CTA">
+                <a href="/users/{{ session['user_id'] }}" class="div_anchors">
+                    <div class="col-12 no_margin">
+                        <p class="CTA_text">View your post in your Journal</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
+
+    
 </div>
 </div>
 

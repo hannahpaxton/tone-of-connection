@@ -2,7 +2,7 @@
 {% block title %}Tone of Connection - Sign In{% endblock %}
 
 {% block body %}
-<div class="jumbotron vertical-center">
+<div class="jumbotron">
   <div class="container-fluid">
   <div class="row" id="home_main">
       <div class="col-12">
@@ -62,9 +62,10 @@
 
 <div class="row" id="background_image">
   <div class="col-12" id="mood_grid">
-      <h2 id="mood_text"> Meet Your Mood</h2>
+      <h2 id="mood_head"> Meet Your Mood</h2>
+      <h5 id="mood_subhead"> Our analyzer, powered by IBM Watson, looks for the following emotional & language tones</h5>
   <div class="row">
-      <div class="col-12 col-md-3 tone_card">
+      <div class="col-12 col-md-3 tone_card" style="background-color:  #ffe6e6;">
           <div class="tone_base">
               <img src="/static/images/anger.png" alt="Anger" style="width:30px">
           </div>
@@ -73,7 +74,7 @@
               An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
           </p>
       </div>
-      <div class="col-12 col-md-3 tone_card">
+      <div class="col-12 col-md-3 tone_card" style="background-color: #fffce6;">
           <div class="tone_base">
               <img src="/static/images/joy.png" alt="Joy" style="width:30px">
           </div>
@@ -82,7 +83,7 @@
               A feeling of extreme gladness, delight, or exultation of the spirit arising from a sense of well-being or satisfaction
           </p>
       </div>
-      <div class="col-12 col-md-3 tone_card">
+      <div class="col-12 col-md-3 tone_card" style="background-color: #fff1e6;">
           <div>
               <div class="tone_base">
                   <img src="/static/images/disgust.png" alt="Disgust" style="width:30px">
@@ -93,7 +94,7 @@
               </p>
           </div>
       </div>
-      <div class="col-12 col-md-3 tone_card">
+      <div class="col-12 col-md-3 tone_card" style="background-color: #f2e6ff;">
           <div class="tone_base">
               <img src="/static/images/analytical.png" alt="Analytical" style="width:30px">
           </div>
@@ -104,7 +105,7 @@
       </div>  
   </div>
   <div class="row">
-      <div class="col-12 col-md-3 tone_card">
+      <div class="col-12 col-md-3 tone_card" style="background-color: #e6e6ff;">
               <div class="tone_base">
                   <img src="/static/images/sadness.png" alt="Sadness" style="width:30px">
               </div>
@@ -112,7 +113,7 @@
               <p class="tone_descrip">
                   An emotional pain associated with feelings of disadvantage, loss, despair, grief, helplessness, disappointment and sorrow
       </div>
-      <div class="col-12 col-md-3 tone_card">
+      <div class="col-12 col-md-3 tone_card" style="background-color: #ffe6ff;">
               <div class="tone_base">
                   <img src="/static/images/fear.png" alt="Fear" style="width:30px">
               </div>
@@ -121,7 +122,7 @@
                   An unpleasant emotion caused by the belief that someone or something is dangerous, likely to cause pain, or a threat
               </p>
       </div>
-      <div class="col-12 col-md-3 tone_card">
+      <div class="col-12 col-md-3 tone_card" style="background-color: #e6ffe6;">
               <div class="tone_base">
                   <img src="/static/images/confidence.png" alt="Confident" style="width:30px">
               </div>
@@ -130,7 +131,7 @@
                   A feeling of self-assurance arising from one's appreciation of one's own abilities or qualities
               </p>
       </div>
-      <div class="col-12 col-md-3 low_margin tone_card">
+      <div class="col-12 col-md-3 low_margin tone_card" style="background-color: #e6ffff;">
               <div class="tone_base">
                   <img src="/static/images/tentative.png" alt="Tentative" style="width:30px">
               </div>
@@ -139,10 +140,10 @@
                   Indicating a lack of confidence or certainty
               </p>
       </div>  
+    </div>
+    </div>
   </div>
   </div>
-</div>
-</div>
 </div>
 
 <script> var postPrompt = "This is Tone of Connection - an anonymous journal that analyzes your mood and translates it to color" </script>

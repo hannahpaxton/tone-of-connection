@@ -8,10 +8,18 @@
 {% block body %}
 <div class="jumbotron vertical-center">
 <div class="container no_log">
-  <div class="row with_background">
+  <div class="row with_background" id="post_entry">
 
-    <div class="col-12 col-md-6 low_margin">
-      <h2 class="prompt" id="typing"></h2>
+    <div class="col-12 col-md-6 no_margin">
+ 
+      <div class="row">
+        <h1 class="static_prompt">Let's Talk...</h1>
+      </div>
+
+      <div class="row">
+        <h2 class="typing_prompt" id="typing"></h2>
+      </div>
+
     </div>
 
     <div class="col-12 col-md-6 low_margin">
@@ -20,7 +28,8 @@
           <input type="hidden" name="prompt_id" value={{ random_prompt.prompt_id }}>
         </div>
 
-        <textarea class="transparency_field" id="postfield" name="user_post" rows="18" cols="50"></textarea>
+        <label>Write away! A full sentence or two will get me the best handle on your tone</label>
+        <textarea class="transparency_field" id="postfield" name="user_post" rows="20" cols="50"></textarea>
 
         <div>
             <label>What's your ZIP Code?</label>

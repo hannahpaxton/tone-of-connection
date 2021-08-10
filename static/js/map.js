@@ -5,7 +5,7 @@ var map = new mapboxgl.Map({
     container: 'map', // container ID
     style: 'mapbox://styles/mapbox/dark-v10', // style URL
     center: [-96, 38], // starting position [lng, lat]
-    zoom: 3 // starting zoom
+    zoom: 4 // starting zoom
 });
 
 map.scrollZoom.disable();
