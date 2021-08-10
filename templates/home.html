@@ -1,30 +1,28 @@
 {% extends 'base_no_log.html' %}
-{% block title %}About Tone of Connection{% endblock %}
+{% block title %}Tone of Connection{% endblock %}
 
 {% block body %}
 <div class="jumbotron vertical-center">
     <div class="container-fluid">
     <div class="row" id="home_main">
-        <div>
-            <h1>Tone of Connection</h1>
-            <p>Some intro text</p> 
-        </div>
+        <div class="col-12">
+            <h1 id="typing" class="typing_animation"></p>
+          </div>
 
-        <div class="col-6 col-md-4 with_background" id="create_account">
-
+        <div class="col-4 col-md-3 with_background" id="login_absolute">
             <h2>Create an Account</h2>
             <form id="account_creation" action="/register" method="POST">
               <p>
-              Username <input class="transparency_field" type="text" name="username">
+              Username <input type="text" name="username">
                 <p class="disclaimer">(Don't worry - this will only be visible to you!)</p>
               </p>
     
               <p>
-                Email <input class="transparency_field" type="text" name="email">
+                Email <input type="text" name="email">
               </p>
     
               <p>
-              Password <input class="transparency_field" type="password" name="password">
+              Password <input type="password" name="password">
               </p>
                 
               <p>
@@ -37,35 +35,39 @@
     </div>
 
     <div class="row" id="features">
-        <div class="col-12 col-md-3 low_margin">
-            <h3 class="tone_name">Anger</h3>
+        <div class="col-12 col-md-3 tone_card">
+            <h3 class="tone_name">Explore Your Mood</h3>
             <p class="tone_descrip">
-                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+                Tone of Connection will give you a random prompt and ask you to provide your thoughts. 
+                It will analyze your post for tone qualities and you'll be presented with a tone result.
             </p>
         </div>
-        <div class="col-12 col-md-3 low_margin">
-            <h3 class="tone_name">Anger</h3>
+        <div class="col-12 col-md-3 tone_card">
+            <h3 class="tone_name">Bring Color to Your Results</h3>
             <p class="tone_descrip">
-                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+                The stronger a detected tone is in your results, the more saturated the corresponding color will be. 
+                A weakly detected tone will be represented with a lighter shade of the base mood color and a more pronounced tone will be more vibrant.
             </p>
         </div>
-        <div class="col-12 col-md-3 low_margin">
-            <h3 class="tone_name">Anger</h3>
+        <div class="col-12 col-md-3 tone_card">
+            <h3 class="tone_name">Save Your Spot on the Mood Map</h3>
             <p class="tone_descrip">
-                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+                Feeling blue? Maybe others are, too! With your given zip code, Tone of Connection will post your thoughts
+                to the Mood Map with a colored marker corresponding to your most resonant tone. 
             </p>
         </div>
-        <div class="col-12 col-md-3 low_margin">
-            <h3 class="tone_name">Anger</h3>
+        <div class="col-12 col-md-3 tone_card">
+            <h3 class="tone_name">Look Back at Your Personal Tone Journey</h3>
             <p class="tone_descrip">
-                An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+                All analyzed posts will save to your journal where you'll have the chance to look your past posts
+                and optionally filter by tone that was present in your results.
             </p>
         </div>     
     </div> 
 
-    <div class="row" id="background_map">
-        <h2 id="tone_about">Meet Your Mood</h2>
-        <div id="mood_grid">
+    <div class="row" id="background_image">
+        <div class="col-12" id="mood_grid">
+            <h2 id="mood_text"> Meet Your Mood</h2>
         <div class="row">
             <div class="col-12 col-md-3 tone_card">
                 <div class="tone_base">
@@ -148,5 +150,6 @@
     </div>
 </div>
 
-    
+<script> var postPrompt = "This is Tone of Connection - an anonymous journal that analyzes your mood and translates it to color" </script>
+<script src="/static/js/welcome.js"></script>    
 {% endblock %}

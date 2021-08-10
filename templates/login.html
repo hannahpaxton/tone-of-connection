@@ -1,23 +1,23 @@
 {% extends 'base_no_log.html' %}
-{% block title %}Tone of Connection{% endblock %}
+{% block title %}Tone of Connection - Sign In{% endblock %}
 
 {% block body %}
 <div class="jumbotron vertical-center">
-  <div class="container">
-    <div class="row with_background">
-      <div class="col-12 col-md-6">
-        <h1 id="typing"></p>
-      </div>
-      <div class="col-12 col-md-6">
-        <h1>Tone of Connection</h1>
+  <div class="container-fluid">
+  <div class="row" id="home_main">
+      <div class="col-12">
+          <h1 id="typing" class="typing_animation"></p>
+        </div>
+
+      <div class="col-4 col-md-3 with_background" id="login_absolute">
         <h2>Sign In</h2>
         <form action="/create-session" method="POST">
           <p>
-            Email <input class="transparency_field" type="text" name="email_login">
+            Email <input type="text" name="email_login">
           </p>
 
           <p>
-            Password <input class="transparency_field" type="password" name="password_login">
+            Password <input type="password" name="password_login">
           </p>
 
           <p>
@@ -25,10 +25,126 @@
           </p>
         </form>
       </div>
-    </div> 
-  </div>   
-</div>   
+  </div>
+  </div>
+</div>
+
+<div class="row" id="features">
+  <div class="col-12 col-md-3 tone_card">
+      <h3 class="tone_name">Explore Your Mood</h3>
+      <p class="tone_descrip">
+          Tone of Connection will give you a random prompt and ask you to provide your thoughts. 
+          It will analyze your post for tone qualities and you'll be presented with a tone result.
+      </p>
+  </div>
+  <div class="col-12 col-md-3 tone_card">
+      <h3 class="tone_name">Bring Color to Your Results</h3>
+      <p class="tone_descrip">
+          The stronger a detected tone is in your results, the more saturated the corresponding color will be. 
+          A weakly detected tone will be represented with a lighter shade of the base mood color and a more pronounced tone will be more vibrant.
+      </p>
+  </div>
+  <div class="col-12 col-md-3 tone_card">
+      <h3 class="tone_name">Save Your Spot on the Mood Map</h3>
+      <p class="tone_descrip">
+          Feeling blue? Maybe others are, too! With your given zip code, Tone of Connection will post your thoughts
+          to the Mood Map with a colored marker corresponding to your most resonant tone. 
+      </p>
+  </div>
+  <div class="col-12 col-md-3 tone_card">
+      <h3 class="tone_name">Look Back at Your Personal Tone Journey</h3>
+      <p class="tone_descrip">
+          All analyzed posts will save to your journal where you'll have the chance to look your past posts
+          and optionally filter by tone that was present in your results.
+      </p>
+  </div>     
+</div> 
+
+<div class="row" id="background_image">
+  <div class="col-12" id="mood_grid">
+      <h2 id="mood_text"> Meet Your Mood</h2>
+  <div class="row">
+      <div class="col-12 col-md-3 tone_card">
+          <div class="tone_base">
+              <img src="/static/images/anger.png" alt="Anger" style="width:30px">
+          </div>
+          <h3 class="tone_name">Anger</h3>
+          <p class="tone_descrip">
+              An emotion characterized by tension and hostility arising from frustration, real or imagined injury by another, or perceived injustice
+          </p>
+      </div>
+      <div class="col-12 col-md-3 tone_card">
+          <div class="tone_base">
+              <img src="/static/images/joy.png" alt="Joy" style="width:30px">
+          </div>
+          <h3 class="tone_name">Joy</h3>
+          <p class="tone_descrip">
+              A feeling of extreme gladness, delight, or exultation of the spirit arising from a sense of well-being or satisfaction
+          </p>
+      </div>
+      <div class="col-12 col-md-3 tone_card">
+          <div>
+              <div class="tone_base">
+                  <img src="/static/images/disgust.png" alt="Disgust" style="width:30px">
+              </div>
+              <h3 class="tone_name">Disgust</h3>
+              <p class="tone_descrip">
+                  A feeling of revulsion or strong disapproval aroused by something unpleasant or offensive
+              </p>
+          </div>
+      </div>
+      <div class="col-12 col-md-3 tone_card">
+          <div class="tone_base">
+              <img src="/static/images/analytical.png" alt="Analytical" style="width:30px">
+          </div>
+          <h3 class="tone_name">Analytical</h3>
+          <p class="tone_descrip">
+              Relating to or using analysis or logical reasoning
+          </p>
+      </div>  
+  </div>
+  <div class="row">
+      <div class="col-12 col-md-3 tone_card">
+              <div class="tone_base">
+                  <img src="/static/images/sadness.png" alt="Sadness" style="width:30px">
+              </div>
+              <h3 class="tone_name">Sadness</h3>
+              <p class="tone_descrip">
+                  An emotional pain associated with feelings of disadvantage, loss, despair, grief, helplessness, disappointment and sorrow
+      </div>
+      <div class="col-12 col-md-3 tone_card">
+              <div class="tone_base">
+                  <img src="/static/images/fear.png" alt="Fear" style="width:30px">
+              </div>
+              <h3 class="tone_name">Fear</h3>
+              <p class="tone_descrip">
+                  An unpleasant emotion caused by the belief that someone or something is dangerous, likely to cause pain, or a threat
+              </p>
+      </div>
+      <div class="col-12 col-md-3 tone_card">
+              <div class="tone_base">
+                  <img src="/static/images/confidence.png" alt="Confident" style="width:30px">
+              </div>
+              <h3 class="tone_name">Confident</h3>
+              <p class="tone_descrip">
+                  A feeling of self-assurance arising from one's appreciation of one's own abilities or qualities
+              </p>
+      </div>
+      <div class="col-12 col-md-3 low_margin tone_card">
+              <div class="tone_base">
+                  <img src="/static/images/tentative.png" alt="Tentative" style="width:30px">
+              </div>
+              <h3 class="tone_name">Tentative</h3>
+              <p class="tone_descrip">
+                  Indicating a lack of confidence or certainty
+              </p>
+      </div>  
+  </div>
+  </div>
+</div>
+</div>
+</div>
 
 <script> var postPrompt = "This is Tone of Connection - an anonymous journal that analyzes your mood and translates it to color" </script>
-<script src="/static/js/welcome.js"></script>
+<script src="/static/js/welcome.js"></script>    
 {% endblock %}
