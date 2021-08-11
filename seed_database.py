@@ -17,7 +17,7 @@ for n in range(10):
     password = 'test'
     email = f'user{n}@test.com'  
     
-    user = crud.create_user(username, password, email)
+    user = crud.create_user(username, email, password)
 
 post_prompts = [
      "What brings you joy?",
@@ -31,12 +31,12 @@ post_prompts = [
      "List five habits that you want to include in your daily routine",
      "What makes you happy?",
      "What is bothering you right now?",
-     "What is my biggest regret in life?",   
+     "What is your biggest regret in life?",   
      "What are some challenges that you are currently facing and how can you overcome them?",
      "What makes you anxious or stressed?",
      "Name three people that you are blessed to have and cannot go a day without",
      "What are five things that you are really good at?",
-     "What do I need to do more of this year?",
+     "What do you need to do more of this year?",
      "Are you happy with your current life? If not, what can you do to change that?",
      "What are your five biggest fears?",    
      "What are you putting off right now?",
