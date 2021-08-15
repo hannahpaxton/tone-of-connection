@@ -9,8 +9,8 @@ The color of the most resonant tone is then used to style a marker on an anonymi
 
 ## Contents
 
-* [Technologies & Stack](#technologies-and-stack)
-* [Set-up & Installation](#set-up-and-installation)
+* [Technologies and Stack](#technologies-and-stack)
+* [Set-up and Installation](#set-up-and-installation)
 * [About the Developer](#about-the-developer)
 
 ## 🎨 Technologies and Stack
