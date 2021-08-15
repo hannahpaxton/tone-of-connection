@@ -9,8 +9,8 @@ The color of the most resonant tone is then used to style a marker on an anonymi
 
 ## Contents
 
-* [Technologies & Stack](#technologies-&-stack)
-* [Set-up & Installation](#set-up-&-installation)
+* [Technologies & Stack](#technologies-and-stack)
+* [Set-up & Installation](#set-up-and-installation)
 * [About the Developer](#about-the-developer)
 
 ## 🎨 Technologies and Stack
@@ -18,7 +18,7 @@ The color of the most resonant tone is then used to style a marker on an anonymi
 **Frontend:** HTML(Bootstrap, Jinja), CSS, JavaScript, React<br/>
 **APIs:** IBM Watson Tone Analyzer, Geocodio, Mapbox
 
-## 🎨 Set-up & Installation
+## 🎨 Set-up and Installation
 
 Install a code editor such as VS code or Sublime Text.
 Install Python3
